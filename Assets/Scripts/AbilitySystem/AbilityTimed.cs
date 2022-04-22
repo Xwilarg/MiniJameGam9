@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AbilitySystem
+namespace MiniJameGam9.AbilitySystem
 {
     /// <summary>
     /// class <c>AbilityTimed</c> Abilities that are Used in the Ability Holder.

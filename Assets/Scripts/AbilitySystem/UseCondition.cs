@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AbilitySystem
+namespace MiniJameGam9.AbilitySystem
 {
     /// <summary>
     /// ScriptableObject UseCondition describe how the evaluation is done

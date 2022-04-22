@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AbilitySystem
+namespace MiniJameGam9.AbilitySystem
 {
     /// <summary>
     /// ScriptableObject AbilityConditioned Hold an Ability and a List of UseCondition

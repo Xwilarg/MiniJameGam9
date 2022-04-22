@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace _Extension
+namespace MiniJameGam9._Extension
 {
     /// <summary>
     /// class ScriptableObjectUtility enable ScriptableObjects to Start Coroutine

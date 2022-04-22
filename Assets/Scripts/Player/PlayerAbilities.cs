@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using AbilitySystem;
+﻿using System.Collections.Generic;
+using MiniJameGam9.AbilitySystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace MiniJameGam9.Player
 {
     public class PlayerAbilities : MonoBehaviour, IAbilityUser
     {

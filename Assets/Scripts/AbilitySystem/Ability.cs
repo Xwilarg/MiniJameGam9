@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AbilitySystem
+namespace MiniJameGam9.AbilitySystem
 {
     /// <summary>
     /// Scriptable Object <c>Ability</c> is the 

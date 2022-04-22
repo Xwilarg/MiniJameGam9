@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace AbilitySystem
+namespace MiniJameGam9.AbilitySystem
 {
     ///<summary>
     /// class <c>AbilityHolder</c> Component that Manage the Active and Cooldown Time of the Abilities.

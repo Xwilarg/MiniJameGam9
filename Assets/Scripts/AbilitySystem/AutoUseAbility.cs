@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using _Extension;
 
-namespace AbilitySystem
+namespace MiniJameGam9.AbilitySystem
 {
     /// <summary>
     /// class <c>AutoUseAbility</c> make the Owner an IA that Use the Abilities Automatically

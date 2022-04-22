@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Player
+namespace MiniJameGam9.Player
 {
     [Serializable]
     public class Stats

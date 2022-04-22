@@ -1,7 +1,7 @@
-﻿using AbilitySystem;
+﻿using MiniJameGam9.AbilitySystem;
 using UnityEngine;
 
-namespace Player
+namespace MiniJameGam9.Player
 {
     [CreateAssetMenu(fileName = "Ability_Shoot", menuName = "Scriptable Object/Abilities/Shoot")]
     public class AbilityShoot : Ability

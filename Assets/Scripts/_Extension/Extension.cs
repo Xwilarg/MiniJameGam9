@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace _Extension
+namespace MiniJameGam9._Extension
 {
     public static class Extension
     {

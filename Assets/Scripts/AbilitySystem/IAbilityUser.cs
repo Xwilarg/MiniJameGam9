@@ -1,7 +1,7 @@
-using Player;
+using MiniJameGam9.Player;
 using UnityEngine;
 
-namespace AbilitySystem
+namespace MiniJameGam9.AbilitySystem
 {
     /// <summary>
     /// interface IAbilityUser should be implemented on All class that can Use Abilities
