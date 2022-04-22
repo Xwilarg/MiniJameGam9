@@ -6,10 +6,9 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerAbilities : MonoBehaviour, IAbilityUser, PlayerControls.IAbilitiesActions
+    public class PlayerAbilities : MonoBehaviour, IAbilityUser
     {
         public GameObject GameObject => this.gameObject;
-        private PlayerControls controls;
 
         [SerializeField] private Transform firePoint;
         public Transform FirePoint => firePoint;
@@ -23,9 +22,6 @@ namespace Player
         private bool isShooting;
         private void Start()
         {
-            controls = new PlayerControls();
-            controls.Abilities.SetCallbacks(this);
-            controls.Abilities.Enable();
 
             foreach (Ability _ability in Abilities)
             {
@@ -41,8 +37,8 @@ namespace Player
             }
         }
 
-
-        public void OnAttack(InputAction.CallbackContext context)
+        
+        public void OnShoot(InputAction.CallbackContext context)
         {
             if (context.performed)
                 isShooting = true;
@@ -50,5 +46,6 @@ namespace Player
             if (context.canceled)
                 isShooting = false;
         }
+
     }
 }

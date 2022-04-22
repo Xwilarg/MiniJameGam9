@@ -14,10 +14,11 @@ namespace Player
         private Vector3 deviation = new Vector3();
         public override void Activate(IAbilityUser user)
         {
+            Transform Bullets = GameObject.Find("Bullets").transform;
             deviation = Vector3.zero;
             for (int i = 0; i < NumberOfProjectiles; i++)
             {
-                GameObject Projectile = Instantiate(Projectile_PF, user.FirePoint);
+                GameObject Projectile = Instantiate(Projectile_PF,Bullets);
                 Projectile.transform.position = user.FirePoint.position;
                 Projectile.transform.rotation = user.FirePoint.rotation;
 
