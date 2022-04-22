@@ -16,7 +16,7 @@ MonoBehaviour:
   ShotIntervalTime: 0.5
   Damage: 20
   BulletCount: 1
-  BulletDeviation: 0.2
+  BulletDeviation: 0.1
   BulletsInMagazine: 12
   BulletVelocity: 50
   BulletPrefab: {fileID: 2313055209670991244, guid: b2e969f991491404dbb1cc3fc87c78b3, type: 3}

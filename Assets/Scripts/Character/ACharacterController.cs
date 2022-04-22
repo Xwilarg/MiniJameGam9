@@ -35,7 +35,9 @@ namespace MiniJameGam9.Character
                 {
                     var go = Instantiate(_baseWeapon.BulletPrefab, _gunOut.position, Quaternion.identity);
                     var rb = go.GetComponent<Rigidbody>();
-                    rb.AddForce((_gunOut.position - transform.position).normalized * _baseWeapon.BulletVelocity, ForceMode.Impulse);
+                    var forward = (_gunOut.position - transform.position).normalized;
+                    var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
+                    rb.AddForce(forward * _baseWeapon.BulletVelocity + right * _baseWeapon.BulletVelocity * _baseWeapon.BulletDeviation * Random.Range(-1f, 1f), ForceMode.Impulse);
                     rb.useGravity = _baseWeapon.IsAffectedByGravity;
                     go.GetComponent<Bullet>().Damage = _baseWeapon.Damage;
                 }
