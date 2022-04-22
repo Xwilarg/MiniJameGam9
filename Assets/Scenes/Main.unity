@@ -1785,7 +1785,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24264
+  m_Name: pb_Mesh27980
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2357,11 +2357,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!4 &1728448413 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1728448413, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
-  m_PrefabInstance: {fileID: 3933596238853615087}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1736726463
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,7 +3685,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4255645828912534783, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
 --- !u!1001 &3933596238853615087
 PrefabInstance:
@@ -3699,14 +3695,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3933596238710000632, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
-      propertyPath: _gunOut
-      value: 
-      objectReference: {fileID: 1728448413}
-    - target: {fileID: 3933596238710000632, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
-      propertyPath: _baseWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
     - target: {fileID: 3933596238710000633, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3755,5 +3743,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3933596238979075872, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}

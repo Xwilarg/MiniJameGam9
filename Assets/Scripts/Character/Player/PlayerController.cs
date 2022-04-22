@@ -69,6 +69,14 @@ namespace MiniJameGam9.Character.Player
         {
             _mousePos = value.ReadValue<Vector2>();
         }
+
+        public void OnShoot(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                Shoot();
+            }
+        }
     }
 
 }

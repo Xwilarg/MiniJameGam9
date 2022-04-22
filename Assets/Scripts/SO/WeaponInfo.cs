@@ -25,7 +25,7 @@ namespace MiniJameGam9.SO
         public float BulletDeviation;
 
         [Tooltip("Number of bullets in magazine, when it's empty the player need to reload, reduced by BulletCount at each shot")]
-        public int BulletInMagazine;
+        public int BulletsInMagazine;
 
         [Tooltip("Force applied to the bullet when launched")]
         public float BulletVelocity;
