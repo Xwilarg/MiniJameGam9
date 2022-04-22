@@ -59,13 +59,13 @@ namespace MiniJameGam9.Character
             {
                 yield return new WaitForSeconds(_baseWeapon.ReloadTime);
                 _bulletsInMagazine = _baseWeapon.BulletsInMagazine;
-                _canShoot = true;
             }
             else
             {
                 _overrideWeapon = null; // If we have another weapon, we throw it away
-                _bulletsInMagazine = CurrentWeapon.BulletsInMagazine; // TODO: Maybe have old amount of bullet before weapon change instead?
+                _bulletsInMagazine = _baseWeapon.BulletsInMagazine; // TODO: Maybe have old amount of bullet before weapon change instead?
             }
+            _canShoot = true;
             OnReloadEnd();
         }
 
