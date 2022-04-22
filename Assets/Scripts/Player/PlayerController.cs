@@ -14,6 +14,7 @@ namespace MiniJameGam9.Player
         private bool _isSprinting;
         private float _verticalSpeed;
         private Camera _cam;
+        private Vector2 _mousePos;
 
         private void Start()
         {
@@ -23,8 +24,7 @@ namespace MiniJameGam9.Player
 
         private void FixedUpdate()
         {
-            var pos = _mov;
-            Vector3 desiredMove = transform.forward * pos.y + transform.right * pos.x;
+            Vector3 desiredMove = new Vector3(_mov.x, 0f, _mov.y);
 
             // Get a normal for the surface that is being touched to move along it
             Physics.SphereCast(transform.position, _cc.radius, Vector3.down, out RaycastHit hitInfo,
@@ -48,6 +48,11 @@ namespace MiniJameGam9.Player
             }
 
             _cc.Move(moveDir);
+
+            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(_mousePos.x, _mousePos.y, _cam.transform.position.y));
+            Vector3 forward = mouseWorld - transform.position;
+            var rot = Quaternion.LookRotation(forward, Vector3.up);
+            transform.rotation = Quaternion.Euler(0f, rot.eulerAngles.y, 0f);
         }
 
         public void OnMovement(InputAction.CallbackContext value)
@@ -62,11 +67,7 @@ namespace MiniJameGam9.Player
 
         public void OnLook(InputAction.CallbackContext value)
         {
-            Vector3 mouse = value.ReadValue<Vector2>();
-            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, _cam.transform.position.y));
-            Vector3 forward = mouseWorld - transform.position;
-            transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
-            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+            _mousePos = value.ReadValue<Vector2>();
         }
     }
 
