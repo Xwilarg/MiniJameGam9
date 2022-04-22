@@ -26,8 +26,10 @@ namespace MiniJameGam9.Environment
 
             _isTriggered = true;
             GetComponent<Renderer>().material = _triggeredMat;
-            other.GetComponent<ACharacterController>().TakeDamage(_damages);
             StartCoroutine(ResetTrap());
+
+            if (other.GetComponent<ACharacterController>() != null)
+                other.GetComponent<ACharacterController>().TakeDamage(_damages);
         }
 
         private IEnumerator ResetTrap()

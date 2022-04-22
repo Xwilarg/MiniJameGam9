@@ -113,3 +113,4 @@ MonoBehaviour:
   _defaultMat: {fileID: 2100000, guid: f2672793834880b429be0e4e2a550566, type: 2}
   _triggeredMat: {fileID: 2100000, guid: a3b511922fc4a254c9ed5a3d8a8bd65b, type: 2}
   _damages: 40
+  _resetTime: 3
