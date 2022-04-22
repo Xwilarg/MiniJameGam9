@@ -15,6 +15,7 @@ MonoBehaviour:
   ReloadTime: 2
   ShotIntervalTime: 0.5
   Damage: 20
+  ShakeIntensity: 0.1
   BulletCount: 1
   BulletDeviation: 0.1
   BulletsInMagazine: 12
