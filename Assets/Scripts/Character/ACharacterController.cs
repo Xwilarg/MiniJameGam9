@@ -64,6 +64,7 @@ namespace MiniJameGam9.Character
             else
             {
                 _overrideWeapon = null; // If we have another weapon, we throw it away
+                _bulletsInMagazine = CurrentWeapon.BulletsInMagazine; // TODO: Maybe have old amount of bullet before weapon change instead?
             }
             OnReloadEnd();
         }
@@ -84,6 +85,17 @@ namespace MiniJameGam9.Character
             {
                 _health = 0;
                 Destroy(gameObject);
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("WeaponCase"))
+            {
+                _overrideWeapon = other.GetComponent<WeaponCase>().WeaponInfo;
+                _bulletsInMagazine = CurrentWeapon.BulletsInMagazine;
+                OnReloadEnd();
+                Destroy(other.gameObject);
             }
         }
     }
