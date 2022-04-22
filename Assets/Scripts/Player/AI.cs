@@ -1,5 +1,6 @@
 ﻿using MiniJameGam9.Debugging;
 using MiniJameGam9.SO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,8 +11,13 @@ namespace MiniJameGam9.Player
         [SerializeField]
         private AIInfo _info;
 
+        [SerializeField]
+        private TMP_Text _debugText;
+
         private Transform _currentNode;
         private NavMeshAgent _agent;
+
+        private AIBehavior _currBehavior;
 
         private void Awake()
         {
@@ -20,14 +26,23 @@ namespace MiniJameGam9.Player
 
         private void Start()
         {
+            UpdateBehavior(AIBehavior.Wandering);
             GetNextNode();
         }
 
         private void Update()
         {
-            if (Vector2.Distance(FlattenY(transform.position), FlattenY(_currentNode.position)) < .1f)
+            if (Vector2.Distance(FlattenY(transform.position), FlattenY(_agent.destination)) < .1f)
             {
-                GetNextNode();
+                if (_currBehavior == AIBehavior.Chasing) // We lost the player, going back at wandering
+                {
+                    UpdateBehavior(AIBehavior.Wandering);
+                    _agent.SetDestination(_currentNode.position);
+                }
+                else
+                {
+                    GetNextNode();
+                }
             }
 
             for (var i = -_info.RayMax; i <= _info.RayMax; i += _info.RayStep)
@@ -42,7 +57,9 @@ namespace MiniJameGam9.Player
                 {
                     if (hit.collider.CompareTag("Player"))
                     {
-
+                        // We found an enemy, begin the chase
+                        UpdateBehavior(AIBehavior.Chasing);
+                        _agent.SetDestination(hit.point);
                     }
                 }
             }
@@ -55,6 +72,15 @@ namespace MiniJameGam9.Player
         {
             _currentNode = AIManager.Instance.NextNode(_currentNode);
             _agent.SetDestination(_currentNode.position);
+        }
+
+        private void UpdateBehavior(AIBehavior value)
+        {
+            _currBehavior = value;
+            if (Application.isEditor)
+            {
+                _debugText.text = $"{_currBehavior}";
+            }
         }
     }
 }
