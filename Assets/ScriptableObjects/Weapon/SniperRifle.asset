@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0698591e64562a947aa7662b8bff518e, type: 3}
-  m_Name: Shotgun
+  m_Name: SniperRifle
   m_EditorClassIdentifier: 
   ReloadTime: 4
-  ShotIntervalTime: 0.25
-  Damage: 4
-  ShakeIntensity: 0.3
-  BulletCount: 10
-  BulletDeviation: 0.3
-  BulletsInMagazine: 20
-  BulletVelocity: 50
+  ShotIntervalTime: 1
+  Damage: 50
+  ShakeIntensity: 0.5
+  BulletCount: 1
+  BulletDeviation: 0
+  BulletsInMagazine: 3
+  BulletVelocity: 100
   BulletPrefab: {fileID: 2313055209670991244, guid: b2e969f991491404dbb1cc3fc87c78b3, type: 3}
   IsAffectedByGravity: 0
