@@ -1,4 +1,4 @@
-﻿namespace MiniJameGam9.Player
+﻿namespace MiniJameGam9.Character.AI
 {
     public enum AIBehavior
     {
