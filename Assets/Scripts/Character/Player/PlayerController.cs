@@ -77,6 +77,12 @@ namespace MiniJameGam9.Character.Player
             return result;
         }
 
+        protected override void OnReloadEnd()
+        {
+            base.OnReloadEnd();
+            UpdateUI();
+        }
+
         public void OnMovement(InputAction.CallbackContext value)
         {
             _mov = value.ReadValue<Vector2>().normalized;
