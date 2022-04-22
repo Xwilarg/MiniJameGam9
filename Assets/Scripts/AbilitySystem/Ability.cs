@@ -8,20 +8,20 @@ namespace MiniJameGam9.AbilitySystem
     public abstract class Ability : ScriptableObject
     {
         [Tooltip("Never Used to search Ability So Double Name are OK")]
-        [SerializeField] private string abilityName;
+        [SerializeField] private string _abilityName;
 
         [Tooltip("For the Ability Holder, in seconds")]
-        [SerializeField] private float cooldownTime;
+        [SerializeField] private float _cooldownTime;
         
         [Tooltip("For the Ability Holder, in seconds")]
-        [SerializeField] private float activeTime;
+        [SerializeField] private float _activeTime;
         
         [Tooltip("if Stay Active is true, this Ability will never be on Cooldown (example Passive or Aura Abilities)")]
-        [SerializeField] private bool stayActive; 
+        [SerializeField] private bool _stayActive; 
         
         [SerializeField] private AbilityType type; 
         
-        public string Name => abilityName;
+        public string Name => _abilityName;
         
         /// <summary>
         /// return the CooldownTime of this Ability, (it can be modified by the user)
@@ -29,7 +29,7 @@ namespace MiniJameGam9.AbilitySystem
         /// <param name="user">the Ability User that Use the Skill</param>
         public virtual float getCooldownTime(IAbilityUser user)
         {
-            return cooldownTime;
+            return _cooldownTime;
         }
         
         /// <summary>
@@ -38,12 +38,12 @@ namespace MiniJameGam9.AbilitySystem
         /// <param name="user">the Ability User that Use the Skill</param>
         public virtual float getActiveTime(IAbilityUser user) 
         {
-            return activeTime;
+            return _activeTime;
         }
 
         public AbilityType Type => type;
         
-        public bool StayActive => stayActive;
+        public bool StayActive => _stayActive;
 
         public abstract void Activate(IAbilityUser user);
         

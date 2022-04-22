@@ -16,23 +16,15 @@ namespace MiniJameGam9.Player
 
         [SerializeField] private AbilityHolder holder;
 
-        [SerializeField] private List<Ability> Abilities = new List<Ability>();
+        [SerializeField] private Ability _shoot;
 
         private bool isShooting;
-        private void Start()
-        {
-
-            foreach (Ability _ability in Abilities)
-            {
-                holder.AddAbility(_ability);
-            }
-        }
 
         private void Update()
         {
             if (isShooting)
             {
-                holder.UseAbility(Abilities.Find(a => a.Name == "Shoot"));
+                holder.UseAbility(_shoot);
             }
         }
 
