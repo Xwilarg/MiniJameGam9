@@ -60,7 +60,17 @@ namespace MiniJameGam9.Character.AI
                     {
                         // We found an enemy, begin the chase
                         UpdateBehavior(AIBehavior.Chasing);
-                        _agent.SetDestination(hit.point);
+                        Shoot(); // Just shoot at the player when we can
+
+                        if (Vector3.Distance(transform.position, hit.point) < 3f)
+                        {
+                            // We are already close enough, no point going closer
+                            _agent.SetDestination(transform.position);
+                        }
+                        else
+                        {
+                            _agent.SetDestination(hit.point);
+                        }
                     }
                 }
             }
