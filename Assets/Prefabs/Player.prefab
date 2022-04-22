@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1728448412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1728448413}
+  m_Layer: 6
+  m_Name: GunOut
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1728448413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728448412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.913}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3933596238710000633}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3933596238710000638
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +66,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3933596238979075873}
+  - {fileID: 1728448413}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -132,6 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e529905d1a9a44cb3e162a44b5056e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cInfo: {fileID: 11400000, guid: 1563ed9f561c31849852037a3fa55aa1, type: 2}
+  _baseWeapon: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
+  _gunOut: {fileID: 1728448413}
   _info: {fileID: 11400000, guid: 70359a8e24075cd439883a6bb6b05f29, type: 2}
 --- !u!114 &3933596238710000631
 MonoBehaviour:
@@ -191,7 +226,20 @@ MonoBehaviour:
     m_ActionId: 6106d544-6425-4c41-b2e5-35d980dab0d8
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3933596238710000632}
+        m_TargetAssemblyTypeName: MiniJameGam9.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1495c027-8e40-4c67-b752-4548173ed362
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -266,7 +314,6 @@ GameObject:
   - component: {fileID: 3933596238979075873}
   - component: {fileID: 3933596238979075902}
   - component: {fileID: 3933596238979075903}
-  - component: {fileID: 3933596238979075872}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -339,16 +386,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3933596238979075872
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3933596238979075874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

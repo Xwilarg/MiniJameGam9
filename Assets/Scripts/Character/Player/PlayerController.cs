@@ -1,4 +1,5 @@
 using MiniJameGam9.SO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,9 @@ namespace MiniJameGam9.Character.Player
     {
         [SerializeField]
         private PlayerInfo _info;
+
+        [SerializeField]
+        private TMP_Text _ammoDisplay;
 
         private CharacterController _cc;
         private Vector3 _mov;
@@ -21,6 +25,7 @@ namespace MiniJameGam9.Character.Player
             Init();
             _cc = GetComponent<CharacterController>();
             _cam = Camera.main;
+            UpdateUI();
         }
 
         private void FixedUpdate()
@@ -56,6 +61,17 @@ namespace MiniJameGam9.Character.Player
             transform.rotation = Quaternion.Euler(0f, rot.eulerAngles.y, 0f);
         }
 
+        private void UpdateUI()
+        {
+            _ammoDisplay.text = $"{_bulletsInMagazine}";
+        }
+
+        public override void Shoot()
+        {
+            base.Shoot();
+            UpdateUI();
+        }
+
         public void OnMovement(InputAction.CallbackContext value)
         {
             _mov = value.ReadValue<Vector2>().normalized;
@@ -69,6 +85,14 @@ namespace MiniJameGam9.Character.Player
         public void OnLook(InputAction.CallbackContext value)
         {
             _mousePos = value.ReadValue<Vector2>();
+        }
+
+        public void OnShoot(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                Shoot();
+            }
         }
     }
 
