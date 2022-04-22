@@ -66,10 +66,15 @@ namespace MiniJameGam9.Character.Player
             _ammoDisplay.text = $"{_bulletsInMagazine}";
         }
 
-        public override void Shoot()
+        public override bool Shoot()
         {
-            base.Shoot();
-            UpdateUI();
+            var result = base.Shoot();
+            if (result)
+            {
+                UpdateUI();
+                _cam.GetComponent<CameraManager>().Launch(.1f, CurrentWeapon.ShakeIntensity);
+            }
+            return result;
         }
 
         public void OnMovement(InputAction.CallbackContext value)

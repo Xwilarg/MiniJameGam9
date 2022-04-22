@@ -16,6 +16,9 @@ namespace MiniJameGam9.SO
         [Tooltip("Damage the player will take per bullet")]
         public int Damage;
 
+        [Tooltip("Screenshake intensity when shooting")]
+        public float ShakeIntensity;
+
         [Header("Bullet info")]
 
         [Tooltip("Number of bullets shot at once (used by shotguns, else 1)")]
