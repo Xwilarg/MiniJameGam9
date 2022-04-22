@@ -26,6 +26,7 @@ namespace MiniJameGam9.Character.AI
 
         private void Start()
         {
+            Init();
             UpdateBehavior(AIBehavior.Wandering);
             GetNextNode();
         }

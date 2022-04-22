@@ -9,7 +9,7 @@ namespace MiniJameGam9.Character
 
         private int _health;
 
-        private void Start()
+        protected void Init()
         {
             _health = _cInfo.BaseHealth;
         }
