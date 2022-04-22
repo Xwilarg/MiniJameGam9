@@ -16,6 +16,8 @@ namespace MiniJameGam9.Character
         [SerializeField]
         private Transform _gunOut;
 
+        protected WeaponInfo CurrentWeapon => _baseWeapon;
+
         private int _health;
         protected int _bulletsInMagazine;
 
@@ -25,7 +27,7 @@ namespace MiniJameGam9.Character
             _bulletsInMagazine = _baseWeapon.BulletsInMagazine;
         }
 
-        public virtual void Shoot()
+        public virtual bool Shoot()
         {
             if (_canShoot)
             {
@@ -43,7 +45,9 @@ namespace MiniJameGam9.Character
                 }
                 _bulletsInMagazine -= bulletsShot;
                 StartCoroutine(_bulletsInMagazine == 0 ? Reload() : WaitForShootAgain());
+                return true;
             }
+            return false;
         }
         private bool _canShoot = true;
 
