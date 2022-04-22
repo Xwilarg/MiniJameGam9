@@ -13,10 +13,12 @@ namespace MiniJameGam9.Player
         private Vector3 _mov;
         private bool _isSprinting;
         private float _verticalSpeed;
+        private Camera _cam;
 
         private void Start()
         {
             _cc = GetComponent<CharacterController>();
+            _cam = Camera.main;
         }
 
         private void FixedUpdate()
@@ -56,6 +58,15 @@ namespace MiniJameGam9.Player
         public void OnSprint(InputAction.CallbackContext value)
         {
             _isSprinting = value.ReadValueAsButton();
+        }
+
+        public void OnLook(InputAction.CallbackContext value)
+        {
+            Vector3 mouse = value.ReadValue<Vector2>();
+            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, _cam.transform.position.y));
+            Vector3 forward = mouseWorld - transform.position;
+            transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
+            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
         }
     }
 
