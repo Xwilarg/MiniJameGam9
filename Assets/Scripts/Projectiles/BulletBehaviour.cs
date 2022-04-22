@@ -29,7 +29,7 @@ namespace MiniJameGam9.Projectiles
         {
             if (other.gameObject.CompareTag(tag)) return;
             if (other.gameObject.CompareTag(_tagOwner)) return;
-            Debug.Log("bullet hit: " + other.gameObject.tag);
+            Debug.Log("bullet hit: " + other.gameObject.name);
             Destroy(gameObject);
         }
     }
