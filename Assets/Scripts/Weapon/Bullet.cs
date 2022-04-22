@@ -11,7 +11,7 @@ namespace MiniJameGam9.Weapon
         {
             if (collision.collider.CompareTag("Player"))
             {
-                GetComponent<ACharacterController>().TakeDamage(Damage);
+                collision.collider.GetComponent<ACharacterController>().TakeDamage(Damage);
             }
             Destroy(gameObject);
         }

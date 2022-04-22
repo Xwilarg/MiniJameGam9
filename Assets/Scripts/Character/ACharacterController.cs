@@ -17,15 +17,15 @@ namespace MiniJameGam9.Character
         private Transform _gunOut;
 
         private int _health;
-        private int _bulletsInMagazine;
+        protected int _bulletsInMagazine;
 
-        private void Start()
+        protected void Init()
         {
             _health = _cInfo.BaseHealth;
             _bulletsInMagazine = _baseWeapon.BulletsInMagazine;
         }
 
-        public void Shoot()
+        public virtual void Shoot()
         {
             if (_canShoot)
             {

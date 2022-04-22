@@ -1,4 +1,5 @@
 using MiniJameGam9.SO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,9 @@ namespace MiniJameGam9.Character.Player
         [SerializeField]
         private PlayerInfo _info;
 
+        [SerializeField]
+        private TMP_Text _ammoDisplay;
+
         private CharacterController _cc;
         private Vector3 _mov;
         private bool _isSprinting;
@@ -18,8 +22,10 @@ namespace MiniJameGam9.Character.Player
 
         private void Start()
         {
+            Init();
             _cc = GetComponent<CharacterController>();
             _cam = Camera.main;
+            UpdateUI();
         }
 
         private void FixedUpdate()
@@ -53,6 +59,17 @@ namespace MiniJameGam9.Character.Player
             Vector3 forward = mouseWorld - transform.position;
             var rot = Quaternion.LookRotation(forward, Vector3.up);
             transform.rotation = Quaternion.Euler(0f, rot.eulerAngles.y, 0f);
+        }
+
+        private void UpdateUI()
+        {
+            _ammoDisplay.text = $"{_bulletsInMagazine}";
+        }
+
+        public override void Shoot()
+        {
+            base.Shoot();
+            UpdateUI();
         }
 
         public void OnMovement(InputAction.CallbackContext value)
