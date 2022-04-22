@@ -2,9 +2,9 @@ using MiniJameGam9.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MiniJameGam9.Player
+namespace MiniJameGam9.Character.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : ACharacterController
     {
         [SerializeField]
         private PlayerInfo _info;

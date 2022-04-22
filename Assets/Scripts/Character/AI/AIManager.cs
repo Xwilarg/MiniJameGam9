@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-namespace MiniJameGam9.Player
+namespace MiniJameGam9.Character.AI
 {
     public class AIManager : MonoBehaviour
     {
