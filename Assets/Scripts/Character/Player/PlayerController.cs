@@ -18,6 +18,7 @@ namespace MiniJameGam9.Character.Player
 
         private void Start()
         {
+            Init();
             _cc = GetComponent<CharacterController>();
             _cam = Camera.main;
         }
