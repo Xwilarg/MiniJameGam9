@@ -24,7 +24,7 @@ namespace MiniJameGam9.Player
 
         private void FixedUpdate()
         {
-            Vector3 desiredMove = new Vector3(_mov.x, 0f, _mov.y);
+            Vector3 desiredMove = new(_mov.x, 0f, _mov.y);
 
             // Get a normal for the surface that is being touched to move along it
             Physics.SphereCast(transform.position, _cc.radius, Vector3.down, out RaycastHit hitInfo,
