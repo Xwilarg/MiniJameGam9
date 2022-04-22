@@ -1158,6 +1158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497c55a10f753834b893529b39c9f3a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _duration: 0
+  _maxDuration: 0
+  _shakeAmount: 0
+  _orPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1056604522
 GameObject:
   m_ObjectHideFlags: 0
@@ -4020,6 +4024,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3933596238710000632, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
+      propertyPath: _baseWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
     - target: {fileID: 3933596238710000632, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
       propertyPath: _ammoDisplay
       value: 

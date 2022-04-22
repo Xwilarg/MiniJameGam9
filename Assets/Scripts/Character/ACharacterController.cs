@@ -13,10 +13,12 @@ namespace MiniJameGam9.Character
         [SerializeField]
         private WeaponInfo _baseWeapon;
 
+        private WeaponInfo _overrideWeapon;
+
         [SerializeField]
         private Transform _gunOut;
 
-        protected WeaponInfo CurrentWeapon => _baseWeapon;
+        protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
 
         private int _health;
         protected int _bulletsInMagazine;
@@ -24,7 +26,7 @@ namespace MiniJameGam9.Character
         protected void Init()
         {
             _health = _cInfo.BaseHealth;
-            _bulletsInMagazine = _baseWeapon.BulletsInMagazine;
+            _bulletsInMagazine = CurrentWeapon.BulletsInMagazine;
         }
 
         public virtual bool Shoot()
@@ -32,16 +34,16 @@ namespace MiniJameGam9.Character
             if (_canShoot)
             {
                 _canShoot = false;
-                var bulletsShot = _bulletsInMagazine >= _baseWeapon.BulletCount ? _baseWeapon.BulletCount : _bulletsInMagazine;
+                var bulletsShot = _bulletsInMagazine >= CurrentWeapon.BulletCount ? CurrentWeapon.BulletCount : _bulletsInMagazine;
                 for (int i = 0; i < bulletsShot; i++)
                 {
-                    var go = Instantiate(_baseWeapon.BulletPrefab, _gunOut.position, Quaternion.identity);
+                    var go = Instantiate(CurrentWeapon.BulletPrefab, _gunOut.position, Quaternion.identity);
                     var rb = go.GetComponent<Rigidbody>();
                     var forward = (_gunOut.position - transform.position).normalized;
                     var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
-                    rb.AddForce(forward * _baseWeapon.BulletVelocity + right * _baseWeapon.BulletVelocity * _baseWeapon.BulletDeviation * Random.Range(-1f, 1f), ForceMode.Impulse);
-                    rb.useGravity = _baseWeapon.IsAffectedByGravity;
-                    go.GetComponent<Bullet>().Damage = _baseWeapon.Damage;
+                    rb.AddForce(forward * CurrentWeapon.BulletVelocity + right * CurrentWeapon.BulletVelocity * CurrentWeapon.BulletDeviation * Random.Range(-1f, 1f), ForceMode.Impulse);
+                    rb.useGravity = CurrentWeapon.IsAffectedByGravity;
+                    go.GetComponent<Bullet>().Damage = CurrentWeapon.Damage;
                 }
                 _bulletsInMagazine -= bulletsShot;
                 StartCoroutine(_bulletsInMagazine == 0 ? Reload() : WaitForShootAgain());
@@ -53,10 +55,21 @@ namespace MiniJameGam9.Character
 
         private IEnumerator Reload()
         {
-            yield return new WaitForSeconds(_baseWeapon.ReloadTime);
-            _bulletsInMagazine = _baseWeapon.BulletsInMagazine;
-            _canShoot = true;
+            if (_overrideWeapon == null)
+            {
+                yield return new WaitForSeconds(_baseWeapon.ReloadTime);
+                _bulletsInMagazine = _baseWeapon.BulletsInMagazine;
+                _canShoot = true;
+            }
+            else
+            {
+                _overrideWeapon = null; // If we have another weapon, we throw it away
+            }
+            OnReloadEnd();
         }
+
+        protected virtual void OnReloadEnd()
+        { }
 
         private IEnumerator WaitForShootAgain()
         {
