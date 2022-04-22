@@ -20,6 +20,7 @@ namespace Player
 
         [SerializeField] private List<Ability> Abilities = new List<Ability>();
 
+        private bool isShooting;
         private void Start()
         {
             controls = new PlayerControls();
@@ -32,13 +33,22 @@ namespace Player
             }
         }
 
+        private void Update()
+        {
+            if (isShooting)
+            {
+                holder.UseAbility(Abilities.Find(a => a.Name == "Shoot"));
+            }
+        }
+
 
         public void OnAttack(InputAction.CallbackContext context)
         {
             if (context.performed)
-            {
-                holder.UseAbility(Abilities.Find(a => a.Name == "Shoot"));
-            }
+                isShooting = true;
+
+            if (context.canceled)
+                isShooting = false;
         }
     }
 }
