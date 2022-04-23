@@ -16,12 +16,12 @@ MonoBehaviour:
   ShotIntervalTime: 4
   Damage: 100
   ShakeIntensity: 0
-  BulletCount: 1
-  BulletsInMagazine: 10
-  BulletVelocity: 6
-  BulletPrefab: {fileID: 4419756608699051478, guid: fdcee50bf598fb1449f772be24c8668f, type: 3}
   IsAffectedByGravity: 1
-  ProjectileHorizontalDeviation: 0
-  ProjectileVerticalDeviation: 10
-  TimeBeforeExplode: 3
+  ProjectilePrefab: {fileID: 4419756608699051478, guid: fdcee50bf598fb1449f772be24c8668f, type: 3}
+  ProjectileCount: 1
+  ProjectilesInMagazine: 10
+  ProjectileVelocity: 9
+  HorizontalDeviation: 0
+  VerticalDeviation: 9
   ExplosionRadius: 2
+  TimeBeforeExplode: 2
