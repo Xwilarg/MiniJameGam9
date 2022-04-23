@@ -1,4 +1,5 @@
 ﻿using MiniJameGam9.SO;
+using MiniJameGam9.UI;
 using MiniJameGam9.Weapon;
 using System.Collections;
 using UnityEngine;
@@ -99,13 +100,18 @@ namespace MiniJameGam9.Character
             _canShoot = true;
         }
 
-        public bool TakeDamage(int value, Vector3 from)
+        public bool TakeDamage(int value, Vector3 from, Profile killer, WeaponInfo weapon)
         {
+            if (_health == 0)
+            {
+                return false;
+            }
             _health -= value;
-            if (_health < 0)
+            if (_health <= 0)
             {
                 _health = 0;
                 Profile.Death++;
+                UIManager.Instance.ShowFrag(killer.Name, Profile.Name, weapon.FragIcon, !killer.IsAi || !Profile.IsAi);
                 Destroy(gameObject);
                 SpawnManager.Instance.Spawn(Profile);
                 return true;

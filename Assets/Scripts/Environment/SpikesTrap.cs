@@ -28,7 +28,7 @@ namespace MiniJameGam9.Environment
             StartCoroutine(ResetTrap());
 
             if (other.GetComponent<ACharacterController>() != null)
-                other.GetComponent<ACharacterController>().TakeDamage(_damages, Vector3.zero);
+                other.GetComponent<ACharacterController>().TakeDamage(_damages, Vector3.zero, null, null);
         }
 
         private IEnumerator ResetTrap()
