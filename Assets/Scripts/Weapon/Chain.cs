@@ -34,7 +34,10 @@ namespace MiniJameGam9.Weapon
                     var dist = Vector3.Distance(transform.position, Caster.position);
                     if (dist < _stopRange)
                     {
-                        _collidedWith.GetComponent<ACharacterController>().CanMove = false;
+                        if (_collidedWith != null)
+                        {
+                            _collidedWith.GetComponent<ACharacterController>().CanMove = false;
+                        }
                         Destroy(gameObject);
                     }
                 }

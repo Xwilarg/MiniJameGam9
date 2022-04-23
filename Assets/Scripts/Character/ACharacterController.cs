@@ -22,7 +22,7 @@ namespace MiniJameGam9.Character
         [SerializeField]
         private Transform _chain;
 
-        private bool _canMove;
+        private bool _canMove = true;
         protected virtual void OnCanMoveChange(bool value)
         { }
 
