@@ -299,6 +299,7 @@ MonoBehaviour:
   _cInfo: {fileID: 11400000, guid: 1563ed9f561c31849852037a3fa55aa1, type: 2}
   _baseWeapon: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
   _gunOut: {fileID: 980069093394308162}
+  _chain: {fileID: 9124061711404462795, guid: 00a3aa46f84c16649ad667fc3ae01a10, type: 3}
   _info: {fileID: 11400000, guid: 2ade5721a3416ed4ebddeb6145dea361, type: 2}
   _debugText: {fileID: 1739308968987449527}
 --- !u!4 &4255645829177675814 stripped
