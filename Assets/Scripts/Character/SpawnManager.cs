@@ -65,9 +65,10 @@ namespace MiniJameGam9.Character
             }
         }
 
+        private int _id = 1;
         public void OnPlayerJoin(PlayerInput value)
         {
-            var player = new Profile(false, $"Player {Guid.NewGuid()}", value.camera, value.GetComponent<InputContainer>());
+            var player = new Profile(false, $"Player {_id++}", value.camera, value.GetComponent<InputContainer>());
             Init(value.gameObject, player);
             value.GetComponentInChildren<CharacterController>().transform.Translate(Vector3.up);
             value.gameObject.GetComponentInChildren<ACharacterController>().Profile = player;
