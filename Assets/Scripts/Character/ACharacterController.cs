@@ -22,12 +22,12 @@ namespace MiniJameGam9.Character
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
 
         private int _health;
-        protected int _bulletsInMagazine;
+        protected int _projectilesInMagazine;
 
         protected void Init()
         {
             _health = _cInfo.BaseHealth;
-            _bulletsInMagazine = CurrentWeapon.BulletsInMagazine;
+            _projectilesInMagazine = CurrentWeapon.ProjectilesInMagazine;
         }
 
         public virtual bool Shoot()
@@ -35,33 +35,23 @@ namespace MiniJameGam9.Character
             if (_canShoot)
             {
                 _canShoot = false;
-                var bulletsShot = _bulletsInMagazine >= CurrentWeapon.BulletCount ? CurrentWeapon.BulletCount : _bulletsInMagazine;
-                for (int i = 0; i < bulletsShot; i++)
+                var projectilesShot = _projectilesInMagazine >= CurrentWeapon.ProjectileCount ? CurrentWeapon.ProjectileCount : _projectilesInMagazine;
+                for (int i = 0; i < projectilesShot; i++)
                 {
-                    var go = Instantiate(CurrentWeapon.BulletPrefab, _gunOut.position, Quaternion.identity);
+                    var go = Instantiate(CurrentWeapon.ProjectilePrefab, _gunOut.position, Quaternion.identity);
                     var rb = go.GetComponent<Rigidbody>();
                     var forward = (_gunOut.position - transform.position).normalized;
                     var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
                     rb.AddForce(
-                        forward * CurrentWeapon.BulletVelocity + 
-                        right * CurrentWeapon.BulletVelocity * CurrentWeapon.ProjectileHorizontalDeviation * Random.Range(-1f, 1f) +
-                        Vector3.up * CurrentWeapon.ProjectileVerticalDeviation
+                        forward * CurrentWeapon.ProjectileVelocity + 
+                        right * CurrentWeapon.ProjectileVelocity * CurrentWeapon.HorizontalDeviation * Random.Range(-1f, 1f) +
+                        Vector3.up * CurrentWeapon.VerticalDeviation
                     , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
-                    
-                    if (go.GetComponent<Bullet>() != null)
-                        go.GetComponent<Bullet>().Damage = CurrentWeapon.Damage;
-
-                    if (go.GetComponent<Grenade>() != null)
-                    {
-                        go.GetComponent<Grenade>().TimeBeforeExplode = CurrentWeapon.TimeBeforeExplode;
-                        go.GetComponent<Grenade>().ExplosionRadius = CurrentWeapon.ExplosionRadius;
-                        go.GetComponent<Grenade>().Damage = CurrentWeapon.Damage;
-                    }
-                    
+                    go.GetComponent<Projectile>().Weapon = CurrentWeapon;
                 }
-                _bulletsInMagazine -= bulletsShot;
-                StartCoroutine(_bulletsInMagazine == 0 ? Reload() : WaitForShootAgain());
+                _projectilesInMagazine -= projectilesShot;
+                StartCoroutine(_projectilesInMagazine == 0 ? Reload() : WaitForShootAgain());
                 return true;
             }
             return false;
@@ -74,12 +64,12 @@ namespace MiniJameGam9.Character
             if (_overrideWeapon == null)
             {
                 yield return new WaitForSeconds(_baseWeapon.ReloadTime);
-                _bulletsInMagazine = _baseWeapon.BulletsInMagazine;
+                _projectilesInMagazine = _baseWeapon.ProjectilesInMagazine;
             }
             else
             {
                 _overrideWeapon = null; // If we have another weapon, we throw it away
-                _bulletsInMagazine = _baseWeapon.BulletsInMagazine; // TODO: Maybe have old amount of bullet before weapon change instead?
+                _projectilesInMagazine = _baseWeapon.ProjectilesInMagazine; // TODO: Maybe have old amount of projectile before weapon change instead?
             }
             _canShoot = true;
             OnReloadEnd();
@@ -102,7 +92,7 @@ namespace MiniJameGam9.Character
                 _health = 0;
                 Destroy(gameObject);
             }
-            Debug.Log($"Take {value} / {_health} HP remaining");
+            // Debug.Log($"Take {value} / {_health} HP remaining");
         }
 
         private void OnTriggerEnter(Collider other)
@@ -110,7 +100,7 @@ namespace MiniJameGam9.Character
             if (other.CompareTag("WeaponCase"))
             {
                 _overrideWeapon = other.GetComponent<WeaponCase>().WeaponInfo;
-                _bulletsInMagazine = CurrentWeapon.BulletsInMagazine;
+                _projectilesInMagazine = CurrentWeapon.ProjectilesInMagazine;
                 OnReloadEnd();
                 Destroy(other.gameObject);
             }

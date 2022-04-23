@@ -1,7 +1,7 @@
 using MiniJameGam9.SO;
-using MiniJameGam9.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using MiniJameGam9.UI;
 
 namespace MiniJameGam9.Character.Player
 {
@@ -62,7 +62,7 @@ namespace MiniJameGam9.Character.Player
 
         private void UpdateUI()
         {
-            UIManager.Instance.AmmoDisplay.text = $"{_bulletsInMagazine}";
+            UIManager.Instance.AmmoDisplay.text = $"{_projectilesInMagazine}";
         }
 
         public override bool Shoot()

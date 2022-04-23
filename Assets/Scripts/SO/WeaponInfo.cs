@@ -13,41 +13,40 @@ namespace MiniJameGam9.SO
         [Tooltip("Time in second between each shot")]
         public float ShotIntervalTime;
 
-        [Tooltip("Damage the player will take per bullet")]
+        [Tooltip("Damage the player will take per projectile")]
         public int Damage;
 
         [Tooltip("Screenshake intensity when shooting")]
         public float ShakeIntensity;
 
-        [Header("Bullet info")]
-
-        [Tooltip("Number of bullets shot at once (used by shotguns, else 1)")]
-        public int BulletCount;
-
-        [Tooltip("Number of bullets in magazine, when it's empty the player need to reload, reduced by BulletCount at each shot")]
-        public int BulletsInMagazine;
-
-        [Tooltip("Force applied to the bullet when launched")]
-        public float BulletVelocity;
-
-        [Tooltip("Prefab used for the bullet")]
-        public GameObject BulletPrefab;
-
-        [Tooltip("Is the bullet affected by gravity")]
-        public bool IsAffectedByGravity;
-
         [Header("Projectile info")]
 
+        [Tooltip("Is the projectile affected by gravity")]
+        public bool IsAffectedByGravity;
+
+        [Tooltip("Prefab used for the projectile")]
+        public GameObject ProjectilePrefab;
+
+        [Tooltip("Number of projectiless shot at once (used by shotguns, else 1)")]
+        public int ProjectileCount;
+
+        [Tooltip("Number of projectiles in magazine, when it's empty the player need to reload, reduced by ProjectileCount at each shot")]
+        public int ProjectilesInMagazine;
+
+        [Tooltip("Force applied to the projectile when launched")]
+        public float ProjectileVelocity;
+
         [Tooltip("Horizontal spread of the projectile, aka their deviation angle")]
-        public float ProjectileHorizontalDeviation;
+        public float HorizontalDeviation;
 
         [Tooltip("Vertical spread of the projectile, aka their deviation angle")]
-        public float ProjectileVerticalDeviation;
+        public float VerticalDeviation;
+
+        [Tooltip("Radius that determines which targets are hit by explosive projectiles")]
+        public float ExplosionRadius;
 
         [Tooltip("The time it takes for the projectile to explode after hitting a target")]
         public float TimeBeforeExplode;
 
-        [Tooltip("Radius that determines which targets are hit by explosive projectiles")]
-        public float ExplosionRadius;
     }
 }
