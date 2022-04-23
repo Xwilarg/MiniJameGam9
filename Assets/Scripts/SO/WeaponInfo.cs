@@ -24,9 +24,6 @@ namespace MiniJameGam9.SO
         [Tooltip("Number of bullets shot at once (used by shotguns, else 1)")]
         public int BulletCount;
 
-        [Tooltip("Spread of the bullet, aka their deviation angle")]
-        public float BulletDeviation;
-
         [Tooltip("Number of bullets in magazine, when it's empty the player need to reload, reduced by BulletCount at each shot")]
         public int BulletsInMagazine;
 
@@ -38,5 +35,13 @@ namespace MiniJameGam9.SO
 
         [Tooltip("Is the bullet affected by gravity")]
         public bool IsAffectedByGravity;
+
+        [Header("Projectile info")]
+
+        [Tooltip("Horizontal spread of the projectile, aka their deviation angle")]
+        public float ProjectileHorizontalDeviation;
+
+        [Tooltip("Vertical spread of the projectile, aka their deviation angle")]
+        public float ProjectileVerticalDeviation;
     }
 }

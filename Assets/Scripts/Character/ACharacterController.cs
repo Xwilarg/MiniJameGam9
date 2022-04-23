@@ -41,7 +41,11 @@ namespace MiniJameGam9.Character
                     var rb = go.GetComponent<Rigidbody>();
                     var forward = (_gunOut.position - transform.position).normalized;
                     var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
-                    rb.AddForce(forward * CurrentWeapon.BulletVelocity + right * CurrentWeapon.BulletVelocity * CurrentWeapon.BulletDeviation * Random.Range(-1f, 1f), ForceMode.Impulse);
+                    rb.AddForce(
+                        forward * CurrentWeapon.BulletVelocity + 
+                        right * CurrentWeapon.BulletVelocity * CurrentWeapon.ProjectileHorizontalDeviation * Random.Range(-1f, 1f) +
+                        Vector3.up * CurrentWeapon.ProjectileVerticalDeviation
+                    , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
                     go.GetComponent<Bullet>().Damage = CurrentWeapon.Damage;
                 }
@@ -51,6 +55,30 @@ namespace MiniJameGam9.Character
             }
             return false;
         }
+
+        public virtual bool Throw()
+        {
+            if (_canShoot)
+            {
+                _canShoot = false;
+                var bulletsShot = _bulletsInMagazine >= _baseWeapon.BulletCount ? _baseWeapon.BulletCount : _bulletsInMagazine;
+                for (int i = 0; i < bulletsShot; i++)
+                {
+                    var go = Instantiate(_baseWeapon.BulletPrefab, _gunOut.position, Quaternion.identity);
+                    var rb = go.GetComponent<Rigidbody>();
+                    var forward = (_gunOut.position - transform.position).normalized;
+                    var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
+                    rb.AddForce(forward * _baseWeapon.BulletVelocity + right * _baseWeapon.BulletVelocity * _baseWeapon.ProjectileHorizontalDeviation * Random.Range(-1f, 1f), ForceMode.Impulse);
+                    rb.useGravity = _baseWeapon.IsAffectedByGravity;
+                    go.GetComponent<Bullet>().Damage = _baseWeapon.Damage;
+                }
+                _bulletsInMagazine -= bulletsShot;
+                StartCoroutine(_bulletsInMagazine == 0 ? Reload() : WaitForShootAgain());
+                return true;
+            }
+            return false;
+        }
+
         private bool _canShoot = true;
 
         private IEnumerator Reload()
