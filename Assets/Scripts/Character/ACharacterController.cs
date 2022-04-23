@@ -1,4 +1,5 @@
 ﻿using MiniJameGam9.SO;
+using MiniJameGam9.UI;
 using MiniJameGam9.Weapon;
 using System.Collections;
 using UnityEngine;
@@ -17,6 +18,9 @@ namespace MiniJameGam9.Character
 
         [SerializeField]
         private Transform _gunOut;
+
+        [SerializeField]
+        private Transform _chain;
 
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
@@ -99,13 +103,29 @@ namespace MiniJameGam9.Character
             _canShoot = true;
         }
 
-        public bool TakeDamage(int value, Vector3 from)
+        public bool TakeDamage(int value, Vector3 from, Profile killer, WeaponInfo weapon)
         {
-            _health -= value;
-            if (_health < 0)
+            if (_health == 0)
             {
-                _health = 0;
+                return false;
+            }
+            if (value > _health)
+            {
+                value = _health;
+            }
+            DamageManager.Instance.AddDamage(Profile, killer, value);
+            _health -= value;
+            if (_health == 0)
+            {
                 Profile.Death++;
+                var assist = DamageManager.Instance.GetAssist(Profile, killer);
+                var inc = killer.Name;
+                if (assist != null)
+                {
+                    inc += $" + {assist.Name}";
+                }
+                UIManager.Instance.ShowFrag(inc, Profile.Name, weapon.FragIcon, !killer.IsAi || !Profile.IsAi);
+                DamageManager.Instance.AddDeath(Profile);
                 Destroy(gameObject);
                 SpawnManager.Instance.Spawn(Profile);
                 return true;
@@ -123,6 +143,12 @@ namespace MiniJameGam9.Character
                 OnReloadEnd();
                 Destroy(other.gameObject);
             }
+        }
+
+         public void ThrowChain()
+        {
+            var go = Instantiate(_chain, transform.position + transform.forward, transform.rotation);
+            go.GetComponent<Chain>().Caster = transform;
         }
     }
 }

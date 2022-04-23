@@ -33,14 +33,14 @@ namespace MiniJameGam9.Weapon
             if (target.CompareTag("Player"))
             {
                 Profile.DamageDealt += Weapon.Damage;
-                if (target.GetComponent<ACharacterController>().TakeDamage(Weapon.Damage, (ShootOrigin - transform.position).normalized))
+                if (target.GetComponent<ACharacterController>().TakeDamage(Weapon.Damage, (ShootOrigin - transform.position).normalized, Profile, Weapon))
                 {
                     Profile.Kill++;
                 }
             }
             if (Weapon.DestroyProjectileEffect != null)
             {
-                var particleFX = Instantiate(Weapon.DestroyProjectileEffect, transform.position);
+                var particleFX = Instantiate(Weapon.DestroyProjectileEffect, transform.position, Quaternion.identity);
                 particleFX.GetComponent<ParticleSystem>().Play();
                 Destroy(particleFX, 1f);
             }

@@ -1,7 +1,6 @@
 using MiniJameGam9.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using MiniJameGam9.UI;
 
 namespace MiniJameGam9.Character.Player
 {
@@ -109,6 +108,11 @@ namespace MiniJameGam9.Character.Player
                 Shoot();
             }
         }
-    }
 
+        public void OnChain(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+                ThrowChain();
+        }
+    }
 }
