@@ -19,6 +19,9 @@ namespace MiniJameGam9.SO
         [Tooltip("Screenshake intensity when shooting")]
         public float ShakeIntensity;
 
+        [Tooltip("Prefab for particle when weapon is shot")]
+        public GameObject ParticleEffect;
+
         [Header("Projectile info")]
 
         [Tooltip("Is the projectile affected by gravity")]
