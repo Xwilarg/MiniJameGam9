@@ -10,7 +10,7 @@ namespace MiniJameGam9.UI
         private TMP_Text _killer, _killed;
 
         [SerializeField]
-        private Image _fragIcon;
+        private Image _fragIcon, _background;
 
         public void Init(string killerName, string killedName, Sprite icon, bool amIInside)
         {
@@ -18,7 +18,7 @@ namespace MiniJameGam9.UI
             _killed.text = killedName;
             _fragIcon.sprite = icon;
 
-            _fragIcon.color = amIInside ? Color.white : Color.grey;
+            _background.color = amIInside ? Color.white : Color.grey;
 
             Destroy(gameObject, amIInside ? 5f : 2f);
         }

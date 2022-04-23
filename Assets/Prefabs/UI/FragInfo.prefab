@@ -365,6 +365,7 @@ MonoBehaviour:
   _killer: {fileID: 537984222585358318}
   _killed: {fileID: 9069774069191607862}
   _fragIcon: {fileID: 2644258773048303894}
+  _background: {fileID: 451727032221810712}
 --- !u!1 &9119241027531456400
 GameObject:
   m_ObjectHideFlags: 0

@@ -104,10 +104,10 @@ namespace MiniJameGam9.Character
         {
             if (_health == 0)
             {
-                return;
+                return false;
             }
             _health -= value;
-            if (_health < 0)
+            if (_health <= 0)
             {
                 _health = 0;
                 Profile.Death++;
