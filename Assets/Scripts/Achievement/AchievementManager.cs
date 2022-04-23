@@ -11,6 +11,7 @@ namespace MiniJameGam9.Achievement
         private void Awake()
         {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
 
         [SerializeField]
@@ -18,10 +19,11 @@ namespace MiniJameGam9.Achievement
 
         private AchievementProgress[] _progress;
 
-        private readonly string _achievementPath = $"{Application.persistentDataPath}/achievement.bin";
+        private string _achievementPath;
 
         public void Start()
         {
+            _achievementPath = $"{Application.persistentDataPath}/achievement.bin";
             _progress = new AchievementProgress[_achievements.Length];
             for (int i = 0; i < _progress.Length; i++)
             {

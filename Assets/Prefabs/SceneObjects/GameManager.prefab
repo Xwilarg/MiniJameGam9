@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2032160102473138881}
   - component: {fileID: 2032160102473138880}
   - component: {fileID: 2032160102473138883}
+  - component: {fileID: 897218735}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fragPrefab: {fileID: 7786431790975386063, guid: 303efa39cd6c9664dbed0ce010c35887, type: 3}
   _fragContainer: {fileID: 0}
+  _timerManager: {fileID: 0}
 --- !u!114 &2032160102473138883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +157,15 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &897218735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032160102473138885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df689b20f0ed4074496f5e86ec4138cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

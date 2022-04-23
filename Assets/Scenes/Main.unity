@@ -1223,51 +1223,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &897218728 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2032160102473138885, guid: c4da8ff8abebb534b9ed134509c72164, type: 3}
-  m_PrefabInstance: {fileID: 2032160102292159085}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &897218735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897218728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df689b20f0ed4074496f5e86ec4138cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &897218736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897218728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ec6c10c835c5548b69b2f9ce5b7639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _achievements:
-  - Name: Professionals Have Standards
-    Type: 0
-    IsPersistentBetweenRounds: 1
-    ValueMax: 100
-    WeaponConstraint: {fileID: 11400000, guid: d2daf539d816f6b409796a3879b1600b, type: 2}
-  - Name: Tequila
-    Type: 0
-    IsPersistentBetweenRounds: 1
-    ValueMax: 100
-    WeaponConstraint: {fileID: 11400000, guid: db44f334cceb812439863a18f5295a0d, type: 2}
-  - Name: High Noon
-    Type: 0
-    IsPersistentBetweenRounds: 1
-    ValueMax: 100
-    WeaponConstraint: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
 --- !u!1 &1056604522
 GameObject:
   m_ObjectHideFlags: 0
@@ -3888,6 +3843,71 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1503820356313369529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1503820356313369531}
+  - component: {fileID: 1503820356313369532}
+  m_Layer: 0
+  m_Name: PersistentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1503820356313369531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503820356313369529}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1503820356313369532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503820356313369529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ec6c10c835c5548b69b2f9ce5b7639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _achievements:
+  - Name: Professionals Have Standards
+    Type: 0
+    IsPersistentBetweenRounds: 1
+    ValueMax: 100
+    WeaponConstraint: {fileID: 11400000, guid: d2daf539d816f6b409796a3879b1600b, type: 2}
+  - Name: Tequila
+    Type: 0
+    IsPersistentBetweenRounds: 1
+    ValueMax: 100
+    WeaponConstraint: {fileID: 11400000, guid: db44f334cceb812439863a18f5295a0d, type: 2}
+  - Name: High Noon
+    Type: 0
+    IsPersistentBetweenRounds: 1
+    ValueMax: 100
+    WeaponConstraint: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
+  - Name: Highlander
+    Type: 1
+    IsPersistentBetweenRounds: 1
+    ValueMax: 1
+    WeaponConstraint: {fileID: 0}
 --- !u!1001 &2032160102292159085
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 {
     public enum AchievementType
     {
-        Kill
+        Kill,
+        Win
     }
 }
