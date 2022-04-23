@@ -12,6 +12,7 @@ namespace MiniJameGam9.Character.Player
 
         public Camera Camera { set; get; }
         public bool IsKeyboard { set; get; }
+        public InputContainer Container { set; get; }
         private CharacterController _cc;
         private Vector3 _mov;
         private float _verticalSpeed;
@@ -71,7 +72,7 @@ namespace MiniJameGam9.Character.Player
 
         private void UpdateUI()
         {
-            UIManager.Instance.AmmoDisplay.text = $"{_projectilesInMagazine}";
+            Container.AmmoText.text = $"{_projectilesInMagazine}";
         }
 
         public override bool Shoot()

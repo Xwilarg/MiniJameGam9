@@ -58,9 +58,10 @@ namespace MiniJameGam9.Character
             if (p.Container != null)
             {
                 var cc = go.GetComponentInChildren<PlayerController>();
-                p.Container._parentController = cc;
+                p.Container.ParentController = cc;
                 cc.IsKeyboard = p.Container.IsKeyboard;
                 cc.Camera = p.Camera;
+                cc.Container = p.Container;
             }
         }
 
