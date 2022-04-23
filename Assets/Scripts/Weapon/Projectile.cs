@@ -38,10 +38,9 @@ namespace MiniJameGam9.Weapon
                     Profile.Kill++;
                 }
             }
-            
             if (Weapon.DestroyProjectileEffect != null)
             {
-                var particleFX = Instantiate(Weapon.DestroyProjectileEffect, transform.position, transform.rotation);
+                var particleFX = Instantiate(Weapon.DestroyProjectileEffect, transform.position);
                 particleFX.GetComponent<ParticleSystem>().Play();
                 Destroy(particleFX, 1f);
             }
@@ -50,7 +49,7 @@ namespace MiniJameGam9.Weapon
 
         void OnDrawGizmos()
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, Weapon.ExplosionRadius);
         }
     }
