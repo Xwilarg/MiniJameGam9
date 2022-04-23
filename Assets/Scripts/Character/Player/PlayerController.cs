@@ -10,17 +10,15 @@ namespace MiniJameGam9.Character.Player
         [SerializeField]
         private PlayerInfo _info;
 
-        private Camera _camera;
+        public Camera Camera { set; get; }
         private CharacterController _cc;
         private Vector3 _mov;
-        private bool _isSprinting;
         private float _verticalSpeed;
         private Vector2 _mousePos;
 
         private void Start()
         {
             Init();
-            _camera = GetComponent<PlayerInput>().camera;
             _cc = GetComponent<CharacterController>();
             UpdateUI();
         }
@@ -35,8 +33,8 @@ namespace MiniJameGam9.Character.Player
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
             Vector3 moveDir = Vector3.zero;
-            moveDir.x = desiredMove.x * _info.ForceMultiplier * (_isSprinting ? _info.SpeedRunningMultiplicator : 1f);
-            moveDir.z = desiredMove.z * _info.ForceMultiplier * (_isSprinting ? _info.SpeedRunningMultiplicator : 1f);
+            moveDir.x = desiredMove.x * _info.ForceMultiplier;
+            moveDir.z = desiredMove.z * _info.ForceMultiplier;
 
             if (_cc.isGrounded && _verticalSpeed < 0f) // We are on the ground and not jumping
             {
@@ -52,7 +50,7 @@ namespace MiniJameGam9.Character.Player
 
             _cc.Move(moveDir);
 
-            Vector3 mouseWorld = _camera.ScreenToWorldPoint(new Vector3(_mousePos.x, _mousePos.y, Vector3.Distance(transform.position, _camera.transform.position)));
+            Vector3 mouseWorld = Camera.ScreenToWorldPoint(new Vector3(_mousePos.x, _mousePos.y, Vector3.Distance(transform.position, Camera.transform.position)));
             Vector3 forward = mouseWorld - transform.position;
             var rot = Quaternion.LookRotation(forward, Vector3.up);
             transform.rotation = Quaternion.Euler(0f, rot.eulerAngles.y, 0f);
@@ -69,7 +67,7 @@ namespace MiniJameGam9.Character.Player
             if (result)
             {
                 UpdateUI();
-                _camera.GetComponent<CameraManager>().Launch(.1f, CurrentWeapon.ShakeIntensity);
+                Camera.GetComponent<CameraManager>().Launch(.1f, CurrentWeapon.ShakeIntensity);
             }
             return result;
         }
@@ -83,11 +81,6 @@ namespace MiniJameGam9.Character.Player
         public void OnMovement(InputAction.CallbackContext value)
         {
             _mov = value.ReadValue<Vector2>().normalized;
-        }
-
-        public void OnSprint(InputAction.CallbackContext value)
-        {
-            //_isSprinting = value.ReadValueAsButton();
         }
 
         public void OnLook(InputAction.CallbackContext value)

@@ -5,7 +5,7 @@ namespace MiniJameGam9.Character.Player
 	public class CameraManager : MonoBehaviour
 	{
 		[SerializeField]
-		private Transform _follow;
+		public Transform _follow;
 
 		private Vector3 _offset;
 
@@ -26,7 +26,7 @@ namespace MiniJameGam9.Character.Player
 			transform.position = _follow.position + _offset;
 			if (_duration > 0)
 			{
-				transform.localPosition = transform.position + _shakeAmount * Mathf.Lerp(0f, 1f, _duration / _maxDuration) * Random.insideUnitSphere;
+				transform.localPosition = transform.localPosition + _shakeAmount * Mathf.Lerp(0f, 1f, _duration / _maxDuration) * Random.insideUnitSphere;
 				_duration -= Time.deltaTime;
 			}
 		}
