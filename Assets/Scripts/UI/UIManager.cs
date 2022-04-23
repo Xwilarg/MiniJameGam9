@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MiniJameGam9.UI
 {
@@ -12,9 +14,24 @@ namespace MiniJameGam9.UI
         [SerializeField]
         private Transform _fragContainer;
 
+        [SerializeField]
+        private TMP_Text _timerManager;
+
+        private float _timer = 5f * 60f;
+
         private void Awake()
         {
             Instance = this;
+        }
+
+        private void Update()
+        {
+            _timer -= Time.deltaTime;
+            _timerManager.text = $"{(int)(_timer / 60)}:{(int)(_timer % 60)}";
+            if (_timer <= 0f)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
         }
 
         public void ShowFrag(string killer, string killed, Sprite fragIcon, bool amIInside)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReloadTime: 4
   ShotIntervalTime: 1
-  Damage: 50
+  Damage: 75
   ShakeIntensity: 0.5
   ShotEffect: {fileID: 0}
   DestroyProjectileEffect: {fileID: 0}
