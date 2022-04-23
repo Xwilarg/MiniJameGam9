@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7017385303595559875}
   - component: {fileID: 7017385303595559874}
   m_Layer: 6
-  m_Name: Pistol Particle
+  m_Name: Handgun Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

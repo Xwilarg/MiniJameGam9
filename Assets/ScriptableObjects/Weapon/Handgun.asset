@@ -16,6 +16,7 @@ MonoBehaviour:
   ShotIntervalTime: 0.5
   Damage: 20
   ShakeIntensity: 0.1
+  ShotParticleEffect: {fileID: 7017385303595559872, guid: 84f68235f4b4cd84dad8c29c57489f1c, type: 3}
   IsAffectedByGravity: 0
   ProjectilePrefab: {fileID: 2313055209670991244, guid: b2e969f991491404dbb1cc3fc87c78b3, type: 3}
   ProjectileCount: 1

@@ -40,8 +40,12 @@ namespace MiniJameGam9.Character
                 var projectilesShot = _projectilesInMagazine >= CurrentWeapon.ProjectileCount ? CurrentWeapon.ProjectileCount : _projectilesInMagazine;
                 for (int i = 0; i < projectilesShot; i++)
                 {
-                    var particleFX = Instantiate(CurrentWeapon.ParticleEffect, _gunOut.position, transform.rotation);
-                    Destroy(particleFX, 0.8f);
+                    if (CurrentWeapon.ShotParticleEffect != null)
+                    {
+                        var particleFX = Instantiate(CurrentWeapon.ShotParticleEffect, _gunOut.position, transform.rotation);
+                        particleFX.GetComponent<ParticleSystem>().Play();
+                        Destroy(particleFX, 1f);
+                    }
                     var go = Instantiate(CurrentWeapon.ProjectilePrefab, _gunOut.position, Quaternion.identity);
                     var rb = go.GetComponent<Rigidbody>();
                     var forward = (_gunOut.position - transform.position).normalized;
