@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using MiniJameGam9.Character;
-using MiniJameGam9.Character.Player;
 
 namespace MiniJameGam9.Environment
 {
@@ -29,7 +28,7 @@ namespace MiniJameGam9.Environment
             StartCoroutine(ResetTrap());
 
             if (other.GetComponent<ACharacterController>() != null)
-                other.GetComponent<ACharacterController>().TakeDamage(_damages);
+                other.GetComponent<ACharacterController>().TakeDamage(_damages, Vector3.zero);
         }
 
         private IEnumerator ResetTrap()
