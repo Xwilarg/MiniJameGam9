@@ -3,6 +3,7 @@
     public enum AIBehavior
     {
         Wandering,
-        Chasing
+        Chasing,
+        Looting
     }
 }

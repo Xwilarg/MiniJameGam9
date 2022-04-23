@@ -1,5 +1,5 @@
 using MiniJameGam9.SO;
-using TMPro;
+using MiniJameGam9.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,9 +9,6 @@ namespace MiniJameGam9.Character.Player
     {
         [SerializeField]
         private PlayerInfo _info;
-
-        [SerializeField]
-        private TMP_Text _ammoDisplay;
 
         private CharacterController _cc;
         private Vector3 _mov;
@@ -25,6 +22,8 @@ namespace MiniJameGam9.Character.Player
             Init();
             _cc = GetComponent<CharacterController>();
             _cam = Camera.main;
+            _cam.transform.position = transform.position + transform.up * 20f + -transform.forward * 10f;
+            _cam.GetComponent<CameraManager>().ToFollow = transform;
             UpdateUI();
         }
 
@@ -63,7 +62,7 @@ namespace MiniJameGam9.Character.Player
 
         private void UpdateUI()
         {
-            _ammoDisplay.text = $"{_bulletsInMagazine}";
+            UIManager.Instance.AmmoDisplay.text = $"{_bulletsInMagazine}";
         }
 
         public override bool Shoot()
