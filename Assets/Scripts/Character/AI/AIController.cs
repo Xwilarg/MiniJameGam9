@@ -1,5 +1,7 @@
 ﻿using MiniJameGam9.Debugging;
 using MiniJameGam9.SO;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -31,6 +33,11 @@ namespace MiniJameGam9.Character.AI
             GetNextNode();
         }
 
+        private float DistanceApprox(Vector3 a, Vector3 b)
+        {
+            return Mathf.Pow(b.x - a.x, 2) + Mathf.Pow(b.y - a.y, 2);
+        }
+
         private void Update()
         {
             if (Vector2.Distance(FlattenY(transform.position), FlattenY(_agent.destination)) < .1f)
@@ -46,7 +53,8 @@ namespace MiniJameGam9.Character.AI
                 }
             }
 
-            _agent.updateRotation = true;
+            // Register hits
+            List<RaycastHit> rays = new();
             for (var i = -_info.RayMax; i <= _info.RayMax; i += _info.RayStep)
             {
                 if (DebugManager.Instance.Raycast(
@@ -57,48 +65,42 @@ namespace MiniJameGam9.Character.AI
                     hit: out RaycastHit hit
                     ))
                 {
-                    if (!HaveImprovedWeapon && hit.collider.CompareTag("WeaponCase"))
-                    {
-                        UpdateBehavior(AIBehavior.Looting);
-                        _agent.SetDestination(hit.point);
-                        break; // Looting is the most important so we don't need to continue checking
-                    }
-                    if (hit.collider.CompareTag("Player"))
-                    {
-                        // We found an enemy, begin the chase
-                        UpdateBehavior(AIBehavior.Chasing);
-                        _agent.updateRotation = false;
-                        if (Vector3.Distance(transform.position, hit.point) < 10f)
-                        {
-                            // We are already close enough, no point going closer
-                            _agent.SetDestination(transform.position);
-                        }
-                        else
-                        {
-                            _agent.SetDestination(hit.point);
-                        }
-
-                        Vector3 direction = (hit.point - transform.position).normalized;
-                        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
-                        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-                    }
+                    rays.Add(hit);
                 }
             }
 
+            // Choose next behavior
+            _agent.updateRotation = true;
+
+            // Looting weapon if we are still with the base one is our priority
+            if (!HaveImprovedWeapon && rays.Any(x => x.collider.CompareTag("WeaponCase")))
             {
-                if (DebugManager.Instance.Raycast(
-                        id: "" + GetInstanceID() + "forward",
-                        origin: transform.position + transform.forward / 2f,
-                        direction: transform.forward,
-                        color: Color.blue,
-                        hit: out RaycastHit hit
-                        ))
+                UpdateBehavior(AIBehavior.Looting);
+                _agent.SetDestination(rays.First(x => x.collider.CompareTag("WeaponCase")).point);
+            }
+            else if (rays.Any(x => x.collider.CompareTag("Player")))
+            {
+                UpdateBehavior(AIBehavior.Chasing);
+
+                // Look at the closest target
+                var closest = rays.Where(x => x.collider.CompareTag("Player")).OrderBy(x => DistanceApprox(transform.position, x.point)).First();
+                _agent.updateRotation = false;
+                if (Vector3.Distance(transform.position, closest.point) < 10f)
                 {
-                    if (hit.collider.CompareTag("Player")) // Enemy in front of us
-                    {
-                        Shoot();
-                    }
+                    // We are already close enough, no point going closer
+                    _agent.SetDestination(transform.position);
                 }
+                else
+                {
+                    _agent.SetDestination(closest.point);
+                }
+
+                // We keep looking at the target
+                Vector3 direction = (closest.point - transform.position).normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+
+                Shoot();
             }
         }
 
