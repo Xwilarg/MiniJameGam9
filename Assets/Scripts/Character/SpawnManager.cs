@@ -26,7 +26,7 @@ namespace MiniJameGam9.Character
             var player = new Profile(false, "Player");
             Spawn(_playerPrefab, player);
             _profiles.Add(player);
-            foreach (var elem in new[] { "Astro", "Zirk" })
+            foreach (var elem in new[] { "Astro"/*, "Zirk" */ })
             {
                 var p = new Profile(true, elem);
                 Spawn(_aiPrefab, p);

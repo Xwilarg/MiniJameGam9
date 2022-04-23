@@ -32,11 +32,11 @@ namespace MiniJameGam9.Weapon
             if (target.CompareTag("Player"))
             {
                 Author.Profile.DamageDealt += Weapon.Damage;
-                if (target.GetComponent<ACharacterController>().TakeDamage(Weapon.Damage))
+                if (target.GetComponent<ACharacterController>().TakeDamage(Weapon.Damage, (Author.transform.position - transform.position).normalized))
+                {
                     Author.Profile.Kill++;
-                
+                }
             }
-
             Destroy(gameObject);
         }
 
