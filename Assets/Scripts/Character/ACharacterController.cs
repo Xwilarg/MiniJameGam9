@@ -106,12 +106,23 @@ namespace MiniJameGam9.Character
             {
                 return false;
             }
-            _health -= value;
-            if (_health <= 0)
+            if (value > _health)
             {
-                _health = 0;
+                value = _health;
+            }
+            DamageManager.Instance.AddDamage(Profile, killer, value);
+            _health -= value;
+            if (_health == 0)
+            {
                 Profile.Death++;
-                UIManager.Instance.ShowFrag(killer.Name, Profile.Name, weapon.FragIcon, !killer.IsAi || !Profile.IsAi);
+                var assist = DamageManager.Instance.GetAssist(Profile, killer);
+                var inc = killer.Name;
+                if (assist != null)
+                {
+                    inc += $" + {assist.Name}";
+                }
+                UIManager.Instance.ShowFrag(inc, Profile.Name, weapon.FragIcon, !killer.IsAi || !Profile.IsAi);
+                DamageManager.Instance.AddDeath(Profile);
                 Destroy(gameObject);
                 SpawnManager.Instance.Spawn(Profile);
                 return true;

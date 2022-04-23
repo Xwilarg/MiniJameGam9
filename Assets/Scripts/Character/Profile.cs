@@ -15,5 +15,21 @@ namespace MiniJameGam9.Character
         public int DamageDealt { get; set; }
         public Camera Camera { get; set; }
         public InputContainer Container { get; set; }
+
+        public static bool operator ==(Profile a, Profile b)
+        {
+            if (a is null)
+            {
+                return b is null;
+            }
+            if (b is null)
+                return false;
+            return a.IsAi == b.IsAi && a.Name == b.Name;
+        }
+        public static bool operator !=(Profile a, Profile b)
+            => !(a == b);
+
+        public override int GetHashCode()
+            => (IsAi, Name).GetHashCode();
     }
 }

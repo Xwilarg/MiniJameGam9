@@ -26,7 +26,7 @@ namespace MiniJameGam9.Character
 
         private void Start()
         {
-            foreach (var elem in new string[] { "Astro", "Zirk"/*, "Gradkal", "Jadith"*/ })
+            foreach (var elem in new string[] { "Astro", "Zirk", "Gradkal", "Jadith", "Kumutues", "Timetraveler65" })
             {
                 var p = new Profile(true, elem);
                 Spawn(_aiPrefab, p);
