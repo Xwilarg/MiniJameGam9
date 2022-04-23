@@ -20,7 +20,10 @@ namespace MiniJameGam9.SO
         public float ShakeIntensity;
 
         [Tooltip("Prefab for particle when weapon is shot")]
-        public GameObject ShotParticleEffect;
+        public GameObject ShotEffect;
+
+        [Tooltip("Prefab for particle when the projectile is destroyed")]
+        public GameObject DestroyProjectileEffect;
 
         [Header("Projectile info")]
 
