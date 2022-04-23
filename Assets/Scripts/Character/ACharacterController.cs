@@ -47,7 +47,17 @@ namespace MiniJameGam9.Character
                         Vector3.up * CurrentWeapon.ProjectileVerticalDeviation
                     , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
-                    go.GetComponent<Bullet>().Damage = CurrentWeapon.Damage;
+                    
+                    if (go.GetComponent<Bullet>() != null)
+                        go.GetComponent<Bullet>().Damage = CurrentWeapon.Damage;
+
+                    if (go.GetComponent<Grenade>() != null)
+                    {
+                        go.GetComponent<Grenade>().TimeBeforeExplode = CurrentWeapon.TimeBeforeExplode;
+                        go.GetComponent<Grenade>().ExplosionRadius = CurrentWeapon.ExplosionRadius;
+                        go.GetComponent<Grenade>().Damage = CurrentWeapon.Damage;
+                    }
+                    
                 }
                 _bulletsInMagazine -= bulletsShot;
                 StartCoroutine(_bulletsInMagazine == 0 ? Reload() : WaitForShootAgain());
@@ -91,6 +101,7 @@ namespace MiniJameGam9.Character
                 _health = 0;
                 Destroy(gameObject);
             }
+            Debug.Log($"Take {value} / {_health} HP remaining");
         }
 
         private void OnTriggerStay(Collider other)

@@ -17,9 +17,11 @@ MonoBehaviour:
   Damage: 100
   ShakeIntensity: 0
   BulletCount: 1
-  BulletsInMagazine: 3
-  BulletVelocity: 5
-  BulletPrefab: {fileID: 5234094031294805300, guid: 4e638539c03bcb94c9ea59d1004d028f, type: 3}
+  BulletsInMagazine: 10
+  BulletVelocity: 6
+  BulletPrefab: {fileID: 4419756608699051478, guid: fdcee50bf598fb1449f772be24c8668f, type: 3}
   IsAffectedByGravity: 1
   ProjectileHorizontalDeviation: 0
   ProjectileVerticalDeviation: 10
+  TimeBeforeExplode: 3
+  ExplosionRadius: 2

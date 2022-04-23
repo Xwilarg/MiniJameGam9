@@ -43,5 +43,11 @@ namespace MiniJameGam9.SO
 
         [Tooltip("Vertical spread of the projectile, aka their deviation angle")]
         public float ProjectileVerticalDeviation;
+
+        [Tooltip("The time it takes for the projectile to explode after hitting a target")]
+        public float TimeBeforeExplode;
+
+        [Tooltip("Radius that determines which targets are hit by explosive projectiles")]
+        public float ExplosionRadius;
     }
 }
