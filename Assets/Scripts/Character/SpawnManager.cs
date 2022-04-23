@@ -23,7 +23,8 @@ namespace MiniJameGam9.Character
         private void Spawn(GameObject go)
         {
             var characters = GameObject.FindGameObjectsWithTag("Player");
-            var furthest = _spawnPoints.OrderByDescending(x => Vector3.Distance(x.position, characters.OrderBy(y => Vector3.Distance(y.transform.position, x.position)).First().transform.position)).First();
+            var furthest = _spawnPoints.OrderByDescending(x => Vector3.Distance(x.position,
+                characters.OrderBy(y => Vector3.Distance(y.transform.position, x.position)).FirstOrDefault()?.transform?.position ?? Vector3.zero)).First();
             Instantiate(go, furthest.position, Quaternion.identity);
         }
     }
