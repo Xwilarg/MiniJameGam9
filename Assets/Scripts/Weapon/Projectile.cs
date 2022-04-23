@@ -37,7 +37,7 @@ namespace MiniJameGam9.Weapon
             }
             if (Weapon.DestroyProjectileEffect != null)
             {
-                var particleFX = Instantiate(Weapon.DestroyProjectileEffect, transform.position);
+                var particleFX = Instantiate(Weapon.DestroyProjectileEffect, transform.position, Quaternion.identity);
                 particleFX.GetComponent<ParticleSystem>().Play();
                 Destroy(particleFX, 1f);
             }

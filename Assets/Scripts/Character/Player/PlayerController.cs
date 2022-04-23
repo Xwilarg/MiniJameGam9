@@ -2,6 +2,7 @@ using MiniJameGam9.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using MiniJameGam9.UI;
+using MiniJameGam9.Weapon;
 
 namespace MiniJameGam9.Character.Player
 {
@@ -9,6 +10,9 @@ namespace MiniJameGam9.Character.Player
     {
         [SerializeField]
         private PlayerInfo _info;
+
+        [SerializeField]
+        private GameObject _chain;
 
         private CharacterController _cc;
         private Vector3 _mov;
@@ -76,6 +80,12 @@ namespace MiniJameGam9.Character.Player
             return result;
         }
 
+        public void ThrowChain()
+        {
+            var go = Instantiate(_chain, transform.position + transform.forward, transform.rotation);
+            go.GetComponent<Chain>().Caster = transform;
+        }
+
         protected override void OnReloadEnd()
         {
             base.OnReloadEnd();
@@ -103,6 +113,12 @@ namespace MiniJameGam9.Character.Player
             {
                 Shoot();
             }
+        }
+
+        public void OnChain(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+                ThrowChain();
         }
     }
 
