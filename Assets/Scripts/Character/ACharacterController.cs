@@ -56,8 +56,11 @@ namespace MiniJameGam9.Character
                         Vector3.up * CurrentWeapon.VerticalDeviation
                     , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
-                    go.GetComponent<Projectile>().Weapon = CurrentWeapon;
-                    go.GetComponent<Projectile>().Author = this;
+
+                    var proj = go.GetComponent<Projectile>();
+                    proj.Weapon = CurrentWeapon;
+                    proj.Profile = Profile;
+                    proj.ShootOrigin = transform.position;
                 }
                 _projectilesInMagazine -= projectilesShot;
                 StartCoroutine(_projectilesInMagazine == 0 ? Reload() : WaitForShootAgain());
@@ -87,13 +90,16 @@ namespace MiniJameGam9.Character
         protected virtual void OnReloadEnd()
         { }
 
+        protected virtual void OnDamageTaken(Vector3 impactDirection)
+        { }
+
         private IEnumerator WaitForShootAgain()
         {
             yield return new WaitForSeconds(_baseWeapon.ShotIntervalTime);
             _canShoot = true;
         }
 
-        public bool TakeDamage(int value)
+        public bool TakeDamage(int value, Vector3 from)
         {
             _health -= value;
             if (_health < 0)
@@ -104,6 +110,7 @@ namespace MiniJameGam9.Character
                 SpawnManager.Instance.Spawn(Profile);
                 return true;
             }
+            OnDamageTaken(from);
             return false;
         }
 
