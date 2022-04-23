@@ -7,8 +7,9 @@ namespace MiniJameGam9.Weapon
 {
     public class Projectile : MonoBehaviour
     {
-        public ACharacterController Author { set; get; }
+        public Profile Profile { set; get; }
         public WeaponInfo Weapon { set; get; }
+        public Vector3 ShootOrigin { set; get; }
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -31,10 +32,10 @@ namespace MiniJameGam9.Weapon
         {
             if (target.CompareTag("Player"))
             {
-                Author.Profile.DamageDealt += Weapon.Damage;
-                if (target.GetComponent<ACharacterController>().TakeDamage(Weapon.Damage, (Author.transform.position - transform.position).normalized))
+                Profile.DamageDealt += Weapon.Damage;
+                if (target.GetComponent<ACharacterController>().TakeDamage(Weapon.Damage, (ShootOrigin - transform.position).normalized))
                 {
-                    Author.Profile.Kill++;
+                    Profile.Kill++;
                 }
             }
             Destroy(gameObject);

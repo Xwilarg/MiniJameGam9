@@ -1061,6 +1061,7 @@ GameObject:
   - component: {fileID: 897218731}
   - component: {fileID: 897218732}
   - component: {fileID: 897218733}
+  - component: {fileID: 897218734}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1130,8 +1131,8 @@ MonoBehaviour:
   - {fileID: 1891067589}
   - {fileID: 439298820}
   _playerPrefab: {fileID: 3933596238710000638, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
+  _playerPrefabContainer: {fileID: 8067190896780619746, guid: 04be135dfeea71e499b0cd15c90c89e3, type: 3}
   _aiPrefab: {fileID: 4255645829177675809, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
-  _cameraPrefab: {fileID: 2914594281861121632, guid: aa4e934f285043f4886fcbf38f1ed4c6, type: 3}
 --- !u!114 &897218733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1145,6 +1146,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmmoDisplay: {fileID: 1757008501}
+--- !u!114 &897218734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897218728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NotificationBehavior: 2
+  m_MaxPlayerCount: -1
+  m_AllowJoining: 1
+  m_JoinBehavior: 0
+  m_PlayerJoinedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 897218732}
+        m_TargetAssemblyTypeName: MiniJameGam9.Character.SpawnManager, Assembly-CSharp
+        m_MethodName: OnPlayerJoin
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_PlayerLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JoinAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PlayerPrefab: {fileID: 8067190896780619746, guid: 04be135dfeea71e499b0cd15c90c89e3, type: 3}
+  m_SplitScreen: 1
+  m_MaintainAspectRatioInSplitScreen: 0
+  m_FixedNumberOfSplitScreens: -1
+  m_SplitScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &1056604522
 GameObject:
   m_ObjectHideFlags: 0

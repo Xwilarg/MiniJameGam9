@@ -1,4 +1,5 @@
 ﻿using MiniJameGam9.Character.Player;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,26 +16,16 @@ namespace MiniJameGam9.Character
             Instance = this;
         }
 
-        private const int _playerCount = 1;
-
         [SerializeField]
         private Transform[] _spawnPoints;
 
         [SerializeField]
-        private GameObject _playerPrefab, _aiPrefab, _cameraPrefab;
+        private GameObject _playerPrefab, _playerPrefabContainer, _aiPrefab;
 
         private readonly List<Profile> _profiles = new();
 
         private void Start()
         {
-            for (int i = 0; i < _playerCount; i++)
-            {
-                var cam = Instantiate(_cameraPrefab, Vector3.zero, _cameraPrefab.transform.rotation).GetComponent<Camera>();
-                cam.rect = new Rect((float)i / _playerCount, 0f, (i + 1f) / _playerCount, 1f);
-                var player = new Profile(false, "Player", cam);
-                Spawn(_playerPrefab, player);
-                _profiles.Add(player);
-            }
             foreach (var elem in new[] { "Astro", "Zirk"/*, "Gradkal", "Jadith"*/ })
             {
                 var p = new Profile(true, elem);
@@ -48,15 +39,24 @@ namespace MiniJameGam9.Character
 
         private void Spawn(GameObject go, Profile p)
         {
-            var characters = GameObject.FindGameObjectsWithTag("Player");
+            var ins = Instantiate(go, Vector3.zero, Quaternion.identity);
+            ins.GetComponentInChildren<ACharacterController>().Profile = p;
+        }
+
+        private void MoveToSpawn(GameObject go)
+        {
+            var characters = GameObject.FindGameObjectsWithTag("Player").Where(x => x.gameObject != go);
             var furthest = _spawnPoints.OrderByDescending(x => Vector3.Distance(x.position,
                 characters.OrderBy(y => Vector3.Distance(y.transform.position, x.position)).FirstOrDefault()?.transform?.position ?? Vector3.zero)).First();
-            var ins = Instantiate(go, furthest.position + Vector3.up, Quaternion.identity);
-            ins.GetComponent<ACharacterController>().Profile = p;
-            if (p.Camera != null)
-            {
-                ins.GetComponent<PlayerController>().Camera = p.Camera;
-            }
+            go.transform.position = furthest.position + Vector3.up;
+        }
+
+        public void OnPlayerJoin(PlayerInput value)
+        {
+            var player = new Profile(false, $"Player {Guid.NewGuid()}");
+            MoveToSpawn(value.transform.parent.gameObject);
+            value.gameObject.GetComponentInChildren<ACharacterController>().Profile = player;
+            _profiles.Add(player);
         }
     }
 }

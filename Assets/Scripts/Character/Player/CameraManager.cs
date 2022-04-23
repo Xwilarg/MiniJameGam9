@@ -4,20 +4,18 @@ namespace MiniJameGam9.Character.Player
 {
 	public class CameraManager : MonoBehaviour
 	{
+		[SerializeField]
 		private Transform _follow;
-		public Transform ToFollow
-		{
-			set
-			{
-				_follow = value;
-				_offset = transform.position - _follow.position;
-			}
-		}
 
 		private Vector3 _offset;
 
 		private float _duration, _maxDuration;
 		private float _shakeAmount;
+
+		private void Start()
+		{
+			_offset = transform.position - _follow.position;
+		}
 
 		void Update()
 		{
@@ -40,5 +38,4 @@ namespace MiniJameGam9.Character.Player
 			_shakeAmount = shakeAmount;
 		}
 	}
-
 }

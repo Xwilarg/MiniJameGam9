@@ -11,16 +11,6 @@ namespace MiniJameGam9.Character.Player
         private PlayerInfo _info;
 
         private Camera _camera;
-        public Camera Camera
-        {
-            set
-            {
-                _camera = value;
-                _camera.transform.position = transform.position + transform.up * 20f + -transform.forward * 10f;
-                _camera.GetComponent<CameraManager>().ToFollow = transform;
-            }
-        }
-
         private CharacterController _cc;
         private Vector3 _mov;
         private bool _isSprinting;
@@ -30,6 +20,7 @@ namespace MiniJameGam9.Character.Player
         private void Start()
         {
             Init();
+            _camera = GetComponent<PlayerInput>().camera;
             _cc = GetComponent<CharacterController>();
             UpdateUI();
         }
