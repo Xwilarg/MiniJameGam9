@@ -8,6 +8,8 @@ namespace MiniJameGam9.Character
     {
         public PlayerController _parentController;
 
+        public bool IsKeyboard => GetComponent<PlayerInput>().currentControlScheme == "Keyboard&Mouse";
+
         public void OnMovement(InputAction.CallbackContext value)
         {
             if (_parentController != null)

@@ -11,6 +11,7 @@ namespace MiniJameGam9.Character.Player
         private PlayerInfo _info;
 
         public Camera Camera { set; get; }
+        public bool IsKeyboard { set; get; }
         private CharacterController _cc;
         private Vector3 _mov;
         private float _verticalSpeed;
@@ -50,10 +51,22 @@ namespace MiniJameGam9.Character.Player
 
             _cc.Move(moveDir);
 
-            Vector3 mouseWorld = Camera.ScreenToWorldPoint(new Vector3(_mousePos.x, _mousePos.y, Vector3.Distance(transform.position, Camera.transform.position)));
-            Vector3 forward = mouseWorld - transform.position;
-            var rot = Quaternion.LookRotation(forward, Vector3.up);
-            transform.rotation = Quaternion.Euler(0f, rot.eulerAngles.y, 0f);
+            if (IsKeyboard)
+            {
+                Vector3 mouseWorld = Camera.ScreenToWorldPoint(new Vector3(_mousePos.x, _mousePos.y, Vector3.Distance(transform.position, Camera.transform.position)));
+                Vector3 forward = mouseWorld - transform.position;
+                var rot = Quaternion.LookRotation(forward, Vector3.up);
+                transform.rotation = Quaternion.Euler(0f, rot.eulerAngles.y, 0f);
+            }
+            else
+            {
+                if (_mousePos != Vector2.zero)
+                {
+                    Vector3 forward = new(_mousePos.x, 0f, _mousePos.y);
+                    var rot = Quaternion.LookRotation(forward, Vector3.up);
+                    transform.rotation = Quaternion.Euler(0f, rot.eulerAngles.y, 0f);
+                }
+            }
         }
 
         private void UpdateUI()

@@ -26,7 +26,7 @@ namespace MiniJameGam9.Character
 
         private void Start()
         {
-            foreach (var elem in new string[] { /*"Astro", "Zirk"/*, "Gradkal", "Jadith"*/ })
+            foreach (var elem in new string[] { "Astro", "Zirk"/*, "Gradkal", "Jadith"*/ })
             {
                 var p = new Profile(true, elem);
                 Spawn(_aiPrefab, p);
@@ -57,9 +57,10 @@ namespace MiniJameGam9.Character
 
             if (p.Container != null)
             {
-                Debug.Log(go.name);
-                p.Container._parentController = go.GetComponentInChildren<PlayerController>();
-                go.GetComponentInChildren<PlayerController>().Camera = p.Camera;
+                var cc = go.GetComponentInChildren<PlayerController>();
+                p.Container._parentController = cc;
+                cc.IsKeyboard = p.Container.IsKeyboard;
+                cc.Camera = p.Camera;
             }
         }
 
