@@ -101,7 +101,7 @@ namespace MiniJameGam9.Character
         {
             if (other.CompareTag("WeaponCase"))
             {
-                _overrideWeapon = other.GetComponent<WeaponCase>().WeaponInfo;
+                _overrideWeapon = other.GetComponent<WeaponCase>().Take();
                 _bulletsInMagazine = CurrentWeapon.BulletsInMagazine;
                 OnReloadEnd();
                 Destroy(other.gameObject);

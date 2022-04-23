@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5234094031294805302}
   - component: {fileID: 5234094031294805303}
   - component: {fileID: 5234094031294805299}
-  m_Layer: 0
-  m_Name: DropWeapon
-  m_TagString: Untagged
+  m_Layer: 8
+  m_Name: DropWeapon (Shotgun)
+  m_TagString: WeaponCase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437d98088acdf2a4eab49a101d94905a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponInfo: {fileID: 11400000, guid: db44f334cceb812439863a18f5295a0d, type: 2}
+  _weaponInfo: {fileID: 11400000, guid: db44f334cceb812439863a18f5295a0d, type: 2}
