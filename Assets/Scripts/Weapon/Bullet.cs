@@ -12,10 +12,10 @@ namespace MiniJameGam9.Weapon
         {
             if (collision.collider.CompareTag("Player"))
             {
-                Author.DamageDealt += Damage;
+                Author.Profile.DamageDealt += Damage;
                 if (collision.collider.GetComponent<ACharacterController>().TakeDamage(Damage))
                 {
-                    Author.Kill++;
+                    Author.Profile.Kill++;
                 }
             }
             Destroy(gameObject);

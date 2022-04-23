@@ -21,9 +21,7 @@ namespace MiniJameGam9.Character
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
 
-        public int Kill { set; get; }
-        public int Death { set; get; }
-        public int DamageDealt { set; get; }
+        public Profile Profile { get; set; }
 
         private int _health;
         protected int _bulletsInMagazine;
@@ -91,8 +89,9 @@ namespace MiniJameGam9.Character
             if (_health < 0)
             {
                 _health = 0;
-                Death++;
+                Profile.Death++;
                 Destroy(gameObject);
+                SpawnManager.Instance.Spawn(Profile);
                 return true;
             }
             return false;
