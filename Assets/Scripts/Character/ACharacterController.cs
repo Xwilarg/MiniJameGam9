@@ -21,6 +21,8 @@ namespace MiniJameGam9.Character
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
 
+        public Profile Profile { get; set; }
+
         private int _health;
         protected int _projectilesInMagazine;
 
@@ -48,7 +50,9 @@ namespace MiniJameGam9.Character
                         Vector3.up * CurrentWeapon.VerticalDeviation
                     , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
-                    go.GetComponent<Projectile>().Weapon = CurrentWeapon;
+                    var bullet = go.GetComponent<Bullet>();
+                    bullet.Damage = CurrentWeapon.Damage;
+                    bullet.Author = this;
                 }
                 _projectilesInMagazine -= projectilesShot;
                 StartCoroutine(_projectilesInMagazine == 0 ? Reload() : WaitForShootAgain());
@@ -84,22 +88,25 @@ namespace MiniJameGam9.Character
             _canShoot = true;
         }
 
-        public void TakeDamage(int value)
+        public bool TakeDamage(int value)
         {
             _health -= value;
             if (_health < 0)
             {
                 _health = 0;
+                Profile.Death++;
                 Destroy(gameObject);
+                SpawnManager.Instance.Spawn(Profile);
+                return true;
             }
-            // Debug.Log($"Take {value} / {_health} HP remaining");
+            return false;
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("WeaponCase"))
             {
-                _overrideWeapon = other.GetComponent<WeaponCase>().WeaponInfo;
+                _overrideWeapon = other.GetComponent<WeaponCase>().Take();
                 _projectilesInMagazine = CurrentWeapon.ProjectilesInMagazine;
                 OnReloadEnd();
                 Destroy(other.gameObject);
