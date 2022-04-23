@@ -11,10 +11,6 @@ namespace MiniJameGam9.SO
         [Tooltip("Speed of the player")]
         public float ForceMultiplier = 1f;
 
-        [Range(0f, 10f)]
-        [Tooltip("Speed multiplicator when the player is running")]
-        public float SpeedRunningMultiplicator;
-
         [Tooltip("Gravity multiplier to make the player fall")]
         public float GravityMultiplicator;
     }

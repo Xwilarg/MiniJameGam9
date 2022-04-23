@@ -40,6 +40,12 @@ namespace MiniJameGam9.Character
                 var projectilesShot = _projectilesInMagazine >= CurrentWeapon.ProjectileCount ? CurrentWeapon.ProjectileCount : _projectilesInMagazine;
                 for (int i = 0; i < projectilesShot; i++)
                 {
+                    if (CurrentWeapon.ShotEffect != null)
+                    {
+                        var particleFX = Instantiate(CurrentWeapon.ShotEffect, _gunOut.position, transform.rotation);
+                        particleFX.GetComponent<ParticleSystem>().Play();
+                        Destroy(particleFX, 1f);
+                    }
                     var go = Instantiate(CurrentWeapon.ProjectilePrefab, _gunOut.position, Quaternion.identity);
                     var rb = go.GetComponent<Rigidbody>();
                     var forward = (_gunOut.position - transform.position).normalized;
@@ -50,12 +56,11 @@ namespace MiniJameGam9.Character
                         Vector3.up * CurrentWeapon.VerticalDeviation
                     , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
-                    
-                    if (null != go.GetComponent<Projectile>())
-                    {
-                        go.GetComponent<Projectile>().Weapon = CurrentWeapon;
-                        go.GetComponent<Projectile>().Author = this;
-                    }
+
+                    var proj = go.GetComponent<Projectile>();
+                    proj.Weapon = CurrentWeapon;
+                    proj.Profile = Profile;
+                    proj.ShootOrigin = transform.position;
                 }
                 _projectilesInMagazine -= projectilesShot;
                 StartCoroutine(_projectilesInMagazine == 0 ? Reload() : WaitForShootAgain());
