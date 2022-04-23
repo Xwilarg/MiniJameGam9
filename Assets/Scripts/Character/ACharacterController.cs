@@ -19,6 +19,7 @@ namespace MiniJameGam9.Character
         private Transform _gunOut;
 
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
+        protected bool HaveImprovedWeapon => _overrideWeapon != null;
 
         private int _health;
         protected int _bulletsInMagazine;
@@ -104,7 +105,7 @@ namespace MiniJameGam9.Character
             Debug.Log($"Take {value} / {_health} HP remaining");
         }
 
-        private void OnTriggerStay(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("WeaponCase"))
             {
