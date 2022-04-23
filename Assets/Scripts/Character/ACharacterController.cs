@@ -21,6 +21,8 @@ namespace MiniJameGam9.Character
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
 
+        public Profile Profile { get; set; }
+
         private int _health;
         protected int _bulletsInMagazine;
 
@@ -48,17 +50,9 @@ namespace MiniJameGam9.Character
                         Vector3.up * CurrentWeapon.ProjectileVerticalDeviation
                     , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
-                    
-                    if (go.GetComponent<Bullet>() != null)
-                        go.GetComponent<Bullet>().Damage = CurrentWeapon.Damage;
-
-                    if (go.GetComponent<Grenade>() != null)
-                    {
-                        go.GetComponent<Grenade>().TimeBeforeExplode = CurrentWeapon.TimeBeforeExplode;
-                        go.GetComponent<Grenade>().ExplosionRadius = CurrentWeapon.ExplosionRadius;
-                        go.GetComponent<Grenade>().Damage = CurrentWeapon.Damage;
-                    }
-                    
+                    var bullet = go.GetComponent<Bullet>();
+                    bullet.Damage = CurrentWeapon.Damage;
+                    bullet.Author = this;
                 }
                 _bulletsInMagazine -= bulletsShot;
                 StartCoroutine(_bulletsInMagazine == 0 ? Reload() : WaitForShootAgain());
@@ -94,22 +88,25 @@ namespace MiniJameGam9.Character
             _canShoot = true;
         }
 
-        public void TakeDamage(int value)
+        public bool TakeDamage(int value)
         {
             _health -= value;
             if (_health < 0)
             {
                 _health = 0;
+                Profile.Death++;
                 Destroy(gameObject);
+                SpawnManager.Instance.Spawn(Profile);
+                return true;
             }
-            Debug.Log($"Take {value} / {_health} HP remaining");
+            return false;
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("WeaponCase"))
             {
-                _overrideWeapon = other.GetComponent<WeaponCase>().WeaponInfo;
+                _overrideWeapon = other.GetComponent<WeaponCase>().Take();
                 _bulletsInMagazine = CurrentWeapon.BulletsInMagazine;
                 OnReloadEnd();
                 Destroy(other.gameObject);
