@@ -23,6 +23,8 @@ namespace MiniJameGam9.Character.Player
             Init();
             _cc = GetComponent<CharacterController>();
             _cam = Camera.main;
+            _cam.transform.position = transform.position + transform.up * 10f + -transform.forward * 5f;
+            _cam.GetComponent<CameraManager>().ToFollow = transform;
             UpdateUI();
         }
 
