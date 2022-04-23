@@ -155,6 +155,12 @@ namespace MiniJameGam9.Character.AI
                 LookAt(closest.point);
 
                 _damageTaken = null;
+
+                if (Vector3.Distance(closest.point, transform.position) > 10)
+                {
+                    ThrowChain();
+                }
+
                 Shoot();
             }
             else

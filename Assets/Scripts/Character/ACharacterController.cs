@@ -29,6 +29,7 @@ namespace MiniJameGam9.Character
 
         private int _health;
         protected int _projectilesInMagazine;
+        private bool _canUseChain = true;
 
         protected void Init()
         {
@@ -55,7 +56,7 @@ namespace MiniJameGam9.Character
                     var forward = (_gunOut.position - transform.position).normalized;
                     var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
                     rb.AddForce(
-                        forward * CurrentWeapon.ProjectileVelocity + 
+                        forward * CurrentWeapon.ProjectileVelocity +
                         right * CurrentWeapon.ProjectileVelocity * CurrentWeapon.HorizontalDeviation * Random.Range(-1f, 1f) +
                         Vector3.up * CurrentWeapon.VerticalDeviation
                     , ForceMode.Impulse);
@@ -145,10 +146,21 @@ namespace MiniJameGam9.Character
             }
         }
 
-         public void ThrowChain()
+        public void ThrowChain()
         {
-            var go = Instantiate(_chain, transform.position + transform.forward, transform.rotation);
-            go.GetComponent<Chain>().Caster = transform;
+            if (_canUseChain)
+            {
+                _canUseChain = false;
+                var go = Instantiate(_chain, transform.position + transform.forward, transform.rotation);
+                go.GetComponent<Chain>().Caster = transform;
+                StartCoroutine(ReloadChain());
+            }
+        }
+
+        private IEnumerator ReloadChain()
+        {
+            yield return new WaitForSeconds(_cInfo.ChainDelay);
+            _canUseChain = true;
         }
     }
 }

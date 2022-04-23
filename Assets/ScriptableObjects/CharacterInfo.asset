@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: CharacterInfo
   m_EditorClassIdentifier: 
   BaseHealth: 100
+  ChainDelay: 3

@@ -279,7 +279,7 @@ MonoBehaviour:
   - Player
   _speed: 30
   _returnSpeed: 60
-  _range: 10
+  _range: 50
   _stopRange: 2
 --- !u!65 &7571730791584847989
 BoxCollider:
