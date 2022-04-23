@@ -168,6 +168,7 @@ MonoBehaviour:
   _baseWeapon: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
   _gunOut: {fileID: 1728448413}
   _info: {fileID: 11400000, guid: 70359a8e24075cd439883a6bb6b05f29, type: 2}
+  _ammoDisplay: {fileID: 0}
 --- !u!114 &3933596238710000631
 MonoBehaviour:
   m_ObjectHideFlags: 0

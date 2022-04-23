@@ -1,4 +1,5 @@
 using MiniJameGam9.SO;
+using MiniJameGam9.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,9 +10,6 @@ namespace MiniJameGam9.Character.Player
     {
         [SerializeField]
         private PlayerInfo _info;
-
-        [SerializeField]
-        private TMP_Text _ammoDisplay;
 
         private CharacterController _cc;
         private Vector3 _mov;
@@ -63,7 +61,7 @@ namespace MiniJameGam9.Character.Player
 
         private void UpdateUI()
         {
-            _ammoDisplay.text = $"{_bulletsInMagazine}";
+            UIManager.Instance.AmmoDisplay.text = $"{_bulletsInMagazine}";
         }
 
         public override bool Shoot()
