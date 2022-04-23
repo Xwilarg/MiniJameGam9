@@ -42,9 +42,23 @@ namespace MiniJameGam9.Character
                     var rb = go.GetComponent<Rigidbody>();
                     var forward = (_gunOut.position - transform.position).normalized;
                     var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
-                    rb.AddForce(forward * CurrentWeapon.BulletVelocity + right * CurrentWeapon.BulletVelocity * CurrentWeapon.BulletDeviation * Random.Range(-1f, 1f), ForceMode.Impulse);
+                    rb.AddForce(
+                        forward * CurrentWeapon.BulletVelocity + 
+                        right * CurrentWeapon.BulletVelocity * CurrentWeapon.ProjectileHorizontalDeviation * Random.Range(-1f, 1f) +
+                        Vector3.up * CurrentWeapon.ProjectileVerticalDeviation
+                    , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
-                    go.GetComponent<Bullet>().Damage = CurrentWeapon.Damage;
+                    
+                    if (go.GetComponent<Bullet>() != null)
+                        go.GetComponent<Bullet>().Damage = CurrentWeapon.Damage;
+
+                    if (go.GetComponent<Grenade>() != null)
+                    {
+                        go.GetComponent<Grenade>().TimeBeforeExplode = CurrentWeapon.TimeBeforeExplode;
+                        go.GetComponent<Grenade>().ExplosionRadius = CurrentWeapon.ExplosionRadius;
+                        go.GetComponent<Grenade>().Damage = CurrentWeapon.Damage;
+                    }
+                    
                 }
                 _bulletsInMagazine -= bulletsShot;
                 StartCoroutine(_bulletsInMagazine == 0 ? Reload() : WaitForShootAgain());
@@ -52,6 +66,7 @@ namespace MiniJameGam9.Character
             }
             return false;
         }
+
         private bool _canShoot = true;
 
         private IEnumerator Reload()
@@ -87,6 +102,7 @@ namespace MiniJameGam9.Character
                 _health = 0;
                 Destroy(gameObject);
             }
+            Debug.Log($"Take {value} / {_health} HP remaining");
         }
 
         private void OnTriggerEnter(Collider other)
