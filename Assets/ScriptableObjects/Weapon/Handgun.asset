@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReloadTime: 2
   ShotIntervalTime: 0.5
-  Damage: 20
+  Damage: 35
   ShakeIntensity: 0.1
   ShotEffect: {fileID: 7017385303595559872, guid: 84f68235f4b4cd84dad8c29c57489f1c, type: 3}
+  DestroyProjectileEffect: {fileID: 0}
   IsAffectedByGravity: 0
   ProjectilePrefab: {fileID: 2313055209670991244, guid: b2e969f991491404dbb1cc3fc87c78b3, type: 3}
   ProjectileCount: 1
@@ -26,3 +27,4 @@ MonoBehaviour:
   VerticalDeviation: 0.1
   ExplosionRadius: 0
   TimeBeforeExplode: 0
+  FragIcon: {fileID: -701596367, guid: 7e7ac7da253a5984f8408c0bc420b290, type: 3}

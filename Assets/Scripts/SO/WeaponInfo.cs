@@ -54,5 +54,7 @@ namespace MiniJameGam9.SO
         [Tooltip("The time it takes for the projectile to explode after hitting a target")]
         public float TimeBeforeExplode;
 
+        [Tooltip("Sprite shown in the frag list")]
+        public Sprite FragIcon;
     }
 }
