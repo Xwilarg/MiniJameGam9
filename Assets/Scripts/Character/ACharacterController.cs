@@ -44,7 +44,11 @@ namespace MiniJameGam9.Character
                     var rb = go.GetComponent<Rigidbody>();
                     var forward = (_gunOut.position - transform.position).normalized;
                     var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
-                    rb.AddForce(forward * CurrentWeapon.BulletVelocity + right * CurrentWeapon.BulletVelocity * CurrentWeapon.BulletDeviation * Random.Range(-1f, 1f), ForceMode.Impulse);
+                    rb.AddForce(
+                        forward * CurrentWeapon.BulletVelocity + 
+                        right * CurrentWeapon.BulletVelocity * CurrentWeapon.ProjectileHorizontalDeviation * Random.Range(-1f, 1f) +
+                        Vector3.up * CurrentWeapon.ProjectileVerticalDeviation
+                    , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
                     var bullet = go.GetComponent<Bullet>();
                     bullet.Damage = CurrentWeapon.Damage;
@@ -56,6 +60,7 @@ namespace MiniJameGam9.Character
             }
             return false;
         }
+
         private bool _canShoot = true;
 
         private IEnumerator Reload()
