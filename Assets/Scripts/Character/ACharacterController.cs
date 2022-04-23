@@ -50,9 +50,12 @@ namespace MiniJameGam9.Character
                         Vector3.up * CurrentWeapon.VerticalDeviation
                     , ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
-                    var bullet = go.GetComponent<Bullet>();
-                    bullet.Damage = CurrentWeapon.Damage;
-                    bullet.Author = this;
+                    
+                    if (null != go.GetComponent<Projectile>())
+                    {
+                        go.GetComponent<Projectile>().Weapon = CurrentWeapon;
+                        go.GetComponent<Projectile>().Author = this;
+                    }
                 }
                 _projectilesInMagazine -= projectilesShot;
                 StartCoroutine(_projectilesInMagazine == 0 ? Reload() : WaitForShootAgain());
