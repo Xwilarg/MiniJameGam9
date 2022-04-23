@@ -115,5 +115,4 @@ namespace MiniJameGam9.Character.Player
                 ThrowChain();
         }
     }
-
 }
