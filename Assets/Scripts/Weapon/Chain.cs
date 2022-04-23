@@ -43,18 +43,13 @@ namespace MiniJameGam9.Weapon
                 transform.Translate(Vector3.forward * _speed * Time.deltaTime);
                 
                 if (_collidedWith)
-                {
-                    Debug.Log(_collidedWith);
                     _collidedWith.transform.position = transform.position;
-                }
             }
             else { Destroy(gameObject); }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.tag);
-            Debug.Log(other.gameObject.tag);
             if (!_hasCollided && _tagsToCheck.Contains(other.gameObject.tag))
                 Collision(other.transform);
         }
