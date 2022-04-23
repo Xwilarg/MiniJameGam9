@@ -35,7 +35,7 @@ namespace MiniJameGam9.Character.AI
         {
             if (Vector2.Distance(FlattenY(transform.position), FlattenY(_agent.destination)) < .1f)
             {
-                if (_currBehavior == AIBehavior.Chasing) // We lost the player, going back at wandering
+                if (_currBehavior != AIBehavior.Wandering) // We lost the player or got our loot, going back at wandering
                 {
                     UpdateBehavior(AIBehavior.Wandering);
                     _agent.SetDestination(_currentNode.position);
@@ -56,6 +56,12 @@ namespace MiniJameGam9.Character.AI
                     hit: out RaycastHit hit
                     ))
                 {
+                    if (!HaveImprovedWeapon && hit.collider.CompareTag("WeaponCase"))
+                    {
+                        UpdateBehavior(AIBehavior.Looting);
+                            _agent.SetDestination(hit.point);
+                        break;
+                    }
                     if (hit.collider.CompareTag("Player"))
                     {
                         // We found an enemy, begin the chase
@@ -71,6 +77,7 @@ namespace MiniJameGam9.Character.AI
                         {
                             _agent.SetDestination(hit.point);
                         }
+                        break;
                     }
                 }
             }
