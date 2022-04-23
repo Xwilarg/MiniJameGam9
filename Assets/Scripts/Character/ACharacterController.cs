@@ -21,6 +21,10 @@ namespace MiniJameGam9.Character
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
 
+        public int Kill { set; get; }
+        public int Death { set; get; }
+        public int DamageDealt { set; get; }
+
         private int _health;
         protected int _bulletsInMagazine;
 
@@ -44,7 +48,9 @@ namespace MiniJameGam9.Character
                     var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
                     rb.AddForce(forward * CurrentWeapon.BulletVelocity + right * CurrentWeapon.BulletVelocity * CurrentWeapon.BulletDeviation * Random.Range(-1f, 1f), ForceMode.Impulse);
                     rb.useGravity = CurrentWeapon.IsAffectedByGravity;
-                    go.GetComponent<Bullet>().Damage = CurrentWeapon.Damage;
+                    var bullet = go.GetComponent<Bullet>();
+                    bullet.Damage = CurrentWeapon.Damage;
+                    bullet.Author = this;
                 }
                 _bulletsInMagazine -= bulletsShot;
                 StartCoroutine(_bulletsInMagazine == 0 ? Reload() : WaitForShootAgain());
@@ -79,14 +85,17 @@ namespace MiniJameGam9.Character
             _canShoot = true;
         }
 
-        public void TakeDamage(int value)
+        public bool TakeDamage(int value)
         {
             _health -= value;
             if (_health < 0)
             {
                 _health = 0;
+                Death++;
                 Destroy(gameObject);
+                return true;
             }
+            return false;
         }
 
         private void OnTriggerEnter(Collider other)
