@@ -19,6 +19,9 @@ namespace MiniJameGam9.Character
         [SerializeField]
         private Transform _gunOut;
 
+        [SerializeField]
+        private Transform _chain;
+
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
 
@@ -140,6 +143,12 @@ namespace MiniJameGam9.Character
                 OnReloadEnd();
                 Destroy(other.gameObject);
             }
+        }
+
+         public void ThrowChain()
+        {
+            var go = Instantiate(_chain, transform.position + transform.forward, transform.rotation);
+            go.GetComponent<Chain>().Caster = transform;
         }
     }
 }

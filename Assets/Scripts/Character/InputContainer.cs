@@ -29,5 +29,11 @@ namespace MiniJameGam9.Character
             if (ParentController != null)
                 ParentController.OnShoot(value);
         }
+
+        public void OnChain(InputAction.CallbackContext value)
+        {
+            if (ParentController != null)
+                ParentController.OnChain(value);
+        }
     }
 }
