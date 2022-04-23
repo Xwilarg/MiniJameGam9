@@ -4,20 +4,18 @@ namespace MiniJameGam9.Character.Player
 {
 	public class CameraManager : MonoBehaviour
 	{
-		private Transform _follow;
-		public Transform ToFollow
-		{
-			set
-			{
-				_follow = value;
-				_offset = transform.position - _follow.position;
-			}
-		}
+		[SerializeField]
+		public Transform _follow;
 
 		private Vector3 _offset;
 
 		private float _duration, _maxDuration;
 		private float _shakeAmount;
+
+		private void Start()
+		{
+			_offset = transform.position - _follow.position;
+		}
 
 		void Update()
 		{
@@ -28,7 +26,7 @@ namespace MiniJameGam9.Character.Player
 			transform.position = _follow.position + _offset;
 			if (_duration > 0)
 			{
-				transform.localPosition = transform.position + _shakeAmount * Mathf.Lerp(0f, 1f, _duration / _maxDuration) * Random.insideUnitSphere;
+				transform.localPosition = transform.localPosition + _shakeAmount * Mathf.Lerp(0f, 1f, _duration / _maxDuration) * Random.insideUnitSphere;
 				_duration -= Time.deltaTime;
 			}
 		}
@@ -40,5 +38,4 @@ namespace MiniJameGam9.Character.Player
 			_shakeAmount = shakeAmount;
 		}
 	}
-
 }
