@@ -59,15 +59,13 @@ namespace MiniJameGam9.Character.AI
                     if (!HaveImprovedWeapon && hit.collider.CompareTag("WeaponCase"))
                     {
                         UpdateBehavior(AIBehavior.Looting);
-                            _agent.SetDestination(hit.point);
-                        break;
+                        _agent.SetDestination(hit.point);
+                        break; // Looting is the most important so we don't need to continue checking
                     }
                     if (hit.collider.CompareTag("Player"))
                     {
                         // We found an enemy, begin the chase
                         UpdateBehavior(AIBehavior.Chasing);
-                        Shoot(); // Just shoot at the player when we can
-
                         if (Vector3.Distance(transform.position, hit.point) < 3f)
                         {
                             // We are already close enough, no point going closer
@@ -77,7 +75,22 @@ namespace MiniJameGam9.Character.AI
                         {
                             _agent.SetDestination(hit.point);
                         }
-                        break;
+                    }
+                }
+            }
+
+            {
+                if (DebugManager.Instance.Raycast(
+                        id: "" + GetInstanceID() + "forward",
+                        origin: transform.position + transform.forward / 2f,
+                        direction: transform.forward,
+                        color: Color.blue,
+                        hit: out RaycastHit hit
+                        ))
+                {
+                    if (hit.collider.CompareTag("Player")) // Enemy in front of us
+                    {
+                        Shoot();
                     }
                 }
             }
