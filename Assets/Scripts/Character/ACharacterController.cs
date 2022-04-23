@@ -22,6 +22,20 @@ namespace MiniJameGam9.Character
         [SerializeField]
         private Transform _chain;
 
+        private bool _canMove;
+        protected virtual void OnCanMoveChange(bool value)
+        { }
+
+        public bool CanMove
+        {
+            set
+            {
+                OnCanMoveChange(value);
+                _canMove = value;
+            }
+            get => _canMove;
+        }
+
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
 

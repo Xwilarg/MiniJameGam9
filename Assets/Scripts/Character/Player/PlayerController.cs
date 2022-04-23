@@ -26,6 +26,11 @@ namespace MiniJameGam9.Character.Player
 
         private void FixedUpdate()
         {
+            if (!CanMove)
+            {
+                return;
+            }
+
             Vector3 desiredMove = new(_mov.x, 0f, _mov.y);
 
             // Get a normal for the surface that is being touched to move along it
@@ -103,7 +108,7 @@ namespace MiniJameGam9.Character.Player
 
         public void OnShoot(InputAction.CallbackContext value)
         {
-            if (value.performed)
+            if (value.performed && CanMove)
             {
                 Shoot();
             }
@@ -111,7 +116,7 @@ namespace MiniJameGam9.Character.Player
 
         public void OnChain(InputAction.CallbackContext value)
         {
-            if (value.performed)
+            if (value.performed && CanMove)
                 ThrowChain();
         }
     }

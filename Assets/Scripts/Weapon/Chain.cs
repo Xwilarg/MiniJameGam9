@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using MiniJameGam9.Character;
 
 namespace MiniJameGam9.Weapon
 {
@@ -32,7 +33,10 @@ namespace MiniJameGam9.Weapon
                     transform.LookAt(Caster);
                     var dist = Vector3.Distance(transform.position, Caster.position);
                     if (dist < _stopRange)
+                    {
+                        _collidedWith.GetComponent<ACharacterController>().CanMove = false;
                         Destroy(gameObject);
+                    }
                 }
                 else
                 {
@@ -51,7 +55,13 @@ namespace MiniJameGam9.Weapon
         private void OnTriggerEnter(Collider other)
         {
             if (!_hasCollided && _tagsToCheck.Contains(other.gameObject.tag))
+            {
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    other.gameObject.GetComponent<ACharacterController>().CanMove = false;
+                }
                 Collision(other.transform);
+            }
         }
 
         void Collision(Transform col)
