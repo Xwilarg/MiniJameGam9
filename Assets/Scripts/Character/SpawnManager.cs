@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using MiniJameGam9.Character.Player;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace MiniJameGam9.Character
 {
@@ -13,20 +15,27 @@ namespace MiniJameGam9.Character
             Instance = this;
         }
 
+        private const int _playerCount = 1;
+
         [SerializeField]
         private Transform[] _spawnPoints;
 
         [SerializeField]
-        private GameObject _playerPrefab, _aiPrefab;
+        private GameObject _playerPrefab, _aiPrefab, _cameraPrefab;
 
         private readonly List<Profile> _profiles = new();
 
         private void Start()
         {
-            var player = new Profile(false, "Player");
-            Spawn(_playerPrefab, player);
-            _profiles.Add(player);
-            foreach (var elem in new[] { "Astro"/*, "Zirk" */ })
+            for (int i = 0; i < _playerCount; i++)
+            {
+                var cam = Instantiate(_cameraPrefab, Vector3.zero, _cameraPrefab.transform.rotation).GetComponent<Camera>();
+                cam.rect = new Rect((float)i / _playerCount, 0f, (i + 1f) / _playerCount, 1f);
+                var player = new Profile(false, "Player", cam);
+                Spawn(_playerPrefab, player);
+                _profiles.Add(player);
+            }
+            foreach (var elem in new[] { "Astro", "Zirk"/*, "Gradkal", "Jadith"*/ })
             {
                 var p = new Profile(true, elem);
                 Spawn(_aiPrefab, p);
@@ -44,6 +53,10 @@ namespace MiniJameGam9.Character
                 characters.OrderBy(y => Vector3.Distance(y.transform.position, x.position)).FirstOrDefault()?.transform?.position ?? Vector3.zero)).First();
             var ins = Instantiate(go, furthest.position + Vector3.up, Quaternion.identity);
             ins.GetComponent<ACharacterController>().Profile = p;
+            if (p.Camera != null)
+            {
+                ins.GetComponent<PlayerController>().Camera = p.Camera;
+            }
         }
     }
 }

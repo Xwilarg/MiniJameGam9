@@ -10,20 +10,27 @@ namespace MiniJameGam9.Character.Player
         [SerializeField]
         private PlayerInfo _info;
 
+        private Camera _camera;
+        public Camera Camera
+        {
+            set
+            {
+                _camera = value;
+                _camera.transform.position = transform.position + transform.up * 20f + -transform.forward * 10f;
+                _camera.GetComponent<CameraManager>().ToFollow = transform;
+            }
+        }
+
         private CharacterController _cc;
         private Vector3 _mov;
         private bool _isSprinting;
         private float _verticalSpeed;
-        private Camera _cam;
         private Vector2 _mousePos;
 
         private void Start()
         {
             Init();
             _cc = GetComponent<CharacterController>();
-            _cam = Camera.main;
-            _cam.transform.position = transform.position + transform.up * 20f + -transform.forward * 10f;
-            _cam.GetComponent<CameraManager>().ToFollow = transform;
             UpdateUI();
         }
 
@@ -54,7 +61,7 @@ namespace MiniJameGam9.Character.Player
 
             _cc.Move(moveDir);
 
-            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(_mousePos.x, _mousePos.y, _cam.transform.position.y));
+            Vector3 mouseWorld = _camera.ScreenToWorldPoint(new Vector3(_mousePos.x, _mousePos.y, Vector3.Distance(transform.position, _camera.transform.position)));
             Vector3 forward = mouseWorld - transform.position;
             var rot = Quaternion.LookRotation(forward, Vector3.up);
             transform.rotation = Quaternion.Euler(0f, rot.eulerAngles.y, 0f);
@@ -71,7 +78,7 @@ namespace MiniJameGam9.Character.Player
             if (result)
             {
                 UpdateUI();
-                _cam.GetComponent<CameraManager>().Launch(.1f, CurrentWeapon.ShakeIntensity);
+                _camera.GetComponent<CameraManager>().Launch(.1f, CurrentWeapon.ShakeIntensity);
             }
             return result;
         }
@@ -89,7 +96,7 @@ namespace MiniJameGam9.Character.Player
 
         public void OnSprint(InputAction.CallbackContext value)
         {
-            _isSprinting = value.ReadValueAsButton();
+            //_isSprinting = value.ReadValueAsButton();
         }
 
         public void OnLook(InputAction.CallbackContext value)
