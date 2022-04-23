@@ -19,6 +19,9 @@ namespace MiniJameGam9.SO
         [Tooltip("Screenshake intensity when shooting")]
         public float ShakeIntensity;
 
+        [Tooltip("Prefab for particle when weapon is shot")]
+        public GameObject ParticleEffect;
+
         [Header("Bullet info")]
 
         [Tooltip("Number of bullets shot at once (used by shotguns, else 1)")]

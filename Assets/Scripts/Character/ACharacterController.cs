@@ -38,6 +38,8 @@ namespace MiniJameGam9.Character
                 var bulletsShot = _bulletsInMagazine >= CurrentWeapon.BulletCount ? CurrentWeapon.BulletCount : _bulletsInMagazine;
                 for (int i = 0; i < bulletsShot; i++)
                 {
+                    var particleFX = Instantiate(CurrentWeapon.ParticleEffect, _gunOut.position, transform.rotation);
+                    Destroy(particleFX, 0.8f);
                     var go = Instantiate(CurrentWeapon.BulletPrefab, _gunOut.position, Quaternion.identity);
                     var rb = go.GetComponent<Rigidbody>();
                     var forward = (_gunOut.position - transform.position).normalized;
