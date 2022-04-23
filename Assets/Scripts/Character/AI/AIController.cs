@@ -46,6 +46,7 @@ namespace MiniJameGam9.Character.AI
                 }
             }
 
+            _agent.updateRotation = true;
             for (var i = -_info.RayMax; i <= _info.RayMax; i += _info.RayStep)
             {
                 if (DebugManager.Instance.Raycast(
@@ -66,7 +67,8 @@ namespace MiniJameGam9.Character.AI
                     {
                         // We found an enemy, begin the chase
                         UpdateBehavior(AIBehavior.Chasing);
-                        if (Vector3.Distance(transform.position, hit.point) < 3f)
+                        _agent.updateRotation = false;
+                        if (Vector3.Distance(transform.position, hit.point) < 10f)
                         {
                             // We are already close enough, no point going closer
                             _agent.SetDestination(transform.position);
@@ -75,6 +77,10 @@ namespace MiniJameGam9.Character.AI
                         {
                             _agent.SetDestination(hit.point);
                         }
+
+                        Vector3 direction = (hit.point - transform.position).normalized;
+                        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
+                        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
                     }
                 }
             }
