@@ -92,6 +92,8 @@ namespace MiniJameGam9.Character.AI
 
         private void Update()
         {
+            CheckForFallDeath();
+
             if (_forgetTimer > 0f)
             {
                 _forgetTimer -= Time.deltaTime;

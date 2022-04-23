@@ -24,6 +24,11 @@ namespace MiniJameGam9.Character.Player
             UpdateUI();
         }
 
+        private void Update()
+        {
+            CheckForFallDeath();
+        }
+
         private void FixedUpdate()
         {
             if (!CanMove)

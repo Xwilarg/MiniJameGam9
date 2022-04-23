@@ -11,6 +11,9 @@ namespace MiniJameGam9.Environment
         [SerializeField]private int _damages = 100;
         [SerializeField]private float _resetTime = 2f;
 
+        [SerializeField]
+        private Sprite _trapIcon;
+
         private bool _isTriggered = false;
 
         private void Start()
@@ -28,7 +31,7 @@ namespace MiniJameGam9.Environment
             StartCoroutine(ResetTrap());
 
             if (other.GetComponent<ACharacterController>() != null)
-                other.GetComponent<ACharacterController>().TakeDamage(_damages, Vector3.zero, null, null);
+                other.GetComponent<ACharacterController>().TakeDamage(_damages, Vector3.zero, null, _trapIcon);
         }
 
         private IEnumerator ResetTrap()
