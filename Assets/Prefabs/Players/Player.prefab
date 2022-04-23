@@ -166,6 +166,7 @@ MonoBehaviour:
   _cInfo: {fileID: 11400000, guid: 1563ed9f561c31849852037a3fa55aa1, type: 2}
   _baseWeapon: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
   _gunOut: {fileID: 1728448413}
+  _chain: {fileID: 9124061711404462795, guid: 00a3aa46f84c16649ad667fc3ae01a10, type: 3}
   _info: {fileID: 11400000, guid: 70359a8e24075cd439883a6bb6b05f29, type: 2}
 --- !u!1 &3933596238979075874
 GameObject:

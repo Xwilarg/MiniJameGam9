@@ -108,6 +108,11 @@ namespace MiniJameGam9.Character.Player
                 Shoot();
             }
         }
-    }
 
+        public void OnChain(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+                ThrowChain();
+        }
+    }
 }
