@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - WeaponCase
+  - Hook
   layers:
   - Default
   - TransparentFX
