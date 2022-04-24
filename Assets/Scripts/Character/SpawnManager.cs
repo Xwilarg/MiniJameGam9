@@ -14,6 +14,7 @@ namespace MiniJameGam9.Character
         private void Awake()
         {
             Instance = this;
+            GetComponent<PlayerInputManager>().JoinPlayer(controlScheme: "Keyboard&Mouse");
         }
 
         [SerializeField]

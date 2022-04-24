@@ -26,12 +26,12 @@ namespace MiniJameGam9.UI
                 if (_timer <= 0f)
                 {
                     _phase = 2;
-                    _timer = 5f;
+                    _timer = 2f;
                 }
             }
             else if (_phase == 2)
             {
-                _blackScreen.color = new(0f, 0f, 0f, (5f - _timer) / 3f);
+                _blackScreen.color = new(0f, 0f, 0f, (2f - _timer) / 2f);
                 Camera.main.transform.Translate(Vector3.forward * Time.deltaTime * 2f);
                 if (_timer <= 0f)
                 {
