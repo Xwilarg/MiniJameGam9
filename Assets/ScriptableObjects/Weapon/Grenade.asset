@@ -17,11 +17,11 @@ MonoBehaviour:
   Damage: 80
   ShakeIntensity: 0
   ShotEffect: {fileID: 0}
-  DestroyProjectileEffect: {fileID: 0}
+  DestroyProjectileEffect: {fileID: 123439836987181730, guid: c6d3914e41e43bb469dc326eb94043a5, type: 3}
   IsAffectedByGravity: 1
-  ProjectilePrefab: {fileID: 4419756608699051478, guid: fdcee50bf598fb1449f772be24c8668f, type: 3}
+  ProjectilePrefab: {fileID: 4073509907151502527, guid: fb488ceaea13e1b439d687286a62ed0e, type: 3}
   ProjectileCount: 1
-  ProjectilesInMagazine: 1
+  ProjectilesInMagazine: 99
   ProjectileVelocity: 9
   HorizontalDeviation: 0
   VerticalDeviation: 9
