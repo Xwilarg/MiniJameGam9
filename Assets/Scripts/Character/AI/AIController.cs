@@ -73,7 +73,7 @@ namespace MiniJameGam9.Character.AI
                            hit: out RaycastHit hit
                            ))
                 {
-                    if (hit.collider.name != _damageTaken.Value.collider.name)
+                    if (_damageTaken.Value.collider == null || hit.collider.name != _damageTaken.Value.collider.name)
                     {
                         _damageTaken = null;
                     }
@@ -88,10 +88,16 @@ namespace MiniJameGam9.Character.AI
         protected override void OnCanMoveChange(bool value)
         {
             _agent.updatePosition = value;
+            if (!value && Application.isEditor)
+            {
+                _debugText.text = "Stunned";
+            }
         }
 
         private void Update()
         {
+            CheckForFallDeath();
+
             if (_forgetTimer > 0f)
             {
                 _forgetTimer -= Time.deltaTime;

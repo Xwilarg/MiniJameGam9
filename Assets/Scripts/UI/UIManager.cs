@@ -24,10 +24,19 @@ namespace MiniJameGam9.UI
             Instance = this;
         }
 
+        private string ToTwoDigits(int nb)
+        {
+            if (nb < 10)
+            {
+                return "0" + nb;
+            }
+            return nb.ToString();
+        }
+
         private void Update()
         {
             _timer -= Time.deltaTime;
-            _timerManager.text = $"{(int)(_timer / 60)}:{(int)(_timer % 60)}";
+            _timerManager.text = $"{(int)(_timer / 60)}:{ToTwoDigits((int)(_timer % 60))}";
             if (_timer <= 0f)
             {
                 SceneManager.LoadScene("GameOver");

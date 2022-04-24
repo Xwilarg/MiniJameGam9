@@ -120,7 +120,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 227
+        y: 454
         width: 227
         height: 227
       alignment: 0
@@ -141,7 +141,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 227
-        y: 227
+        y: 454
         width: 227
         height: 227
       alignment: 0
@@ -162,7 +162,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 454
-        y: 227
+        y: 454
         width: 227
         height: 227
       alignment: 0
@@ -183,7 +183,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 227
         width: 227
         height: 227
       alignment: 0
@@ -204,7 +204,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 227
-        y: 0
+        y: 227
         width: 227
         height: 227
       alignment: 0
@@ -225,7 +225,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 454
-        y: 0
+        y: 227
         width: 227
         height: 227
       alignment: 0
@@ -237,6 +237,48 @@ TextureImporter:
       bones: []
       spriteID: ca714a44696868843bb2485040d24c5b
       internalID: 234101465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FragIcons_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c29baa2038aeb4895b5a8dcf0bcb74
+      internalID: 1393885069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FragIcons_7
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 0
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f208d4f63f677844ba62db84984ff21
+      internalID: -190372058
       vertices: []
       indices: 
       edges: []
@@ -256,7 +298,9 @@ TextureImporter:
       FragIcons_3: -2013291317
       FragIcons_0: -701596367
       FragIcons_1: -1690976889
+      FragIcons_7: -190372058
       FragIcons_4: -1029330910
+      FragIcons_6: 1393885069
       FragIcons_5: 234101465
   spritePackingTag: 
   pSDRemoveMatte: 0
