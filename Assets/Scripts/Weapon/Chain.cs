@@ -11,7 +11,11 @@ namespace MiniJameGam9.Weapon
         [SerializeField] private float _speed, _returnSpeed;
         [SerializeField] private float _range, _stopRange;
 
+        [SerializeField]
+        private Sprite _grappinIcon;
+
         public Transform Caster { set; get; }
+        public Profile Profile { set; get; }
         private Transform _collidedWith;
         private LineRenderer _line;
         private bool _hasCollided;
@@ -65,8 +69,19 @@ namespace MiniJameGam9.Weapon
                     {
                         otherACC = other.gameObject.GetComponent<ACharacterController>();
                         otherACC.CanMove = false;
+                        if (otherACC.TakeDamage(5, transform.position, Profile, _grappinIcon))
+                        {
+                            Collision(null);
+                        }
+                        else
+                        {
+                            Collision(other.transform);
+                        }
                     }
-                    Collision(other.transform);
+                    else
+                    {
+                        Collision(other.transform);
+                    }
                 }
                 else
                 {

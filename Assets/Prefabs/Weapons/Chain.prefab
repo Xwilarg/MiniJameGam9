@@ -282,6 +282,7 @@ MonoBehaviour:
   _returnSpeed: 60
   _range: 50
   _stopRange: 2
+  _grappinIcon: {fileID: -190372058, guid: 7e7ac7da253a5984f8408c0bc420b290, type: 3}
 --- !u!65 &7571730791584847989
 BoxCollider:
   m_ObjectHideFlags: 0

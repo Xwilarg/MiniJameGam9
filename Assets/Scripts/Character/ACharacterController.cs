@@ -182,6 +182,7 @@ namespace MiniJameGam9.Character
                 _canUseChain = false;
                 var go = Instantiate(_chain, transform.position + transform.forward, transform.rotation);
                 go.GetComponent<Chain>().Caster = transform;
+                go.GetComponent<Chain>().Profile = Profile;
                 StartCoroutine(ReloadChain());
             }
         }
