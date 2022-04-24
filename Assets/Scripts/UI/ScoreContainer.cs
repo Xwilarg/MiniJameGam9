@@ -1,5 +1,6 @@
 ﻿using MiniJameGam9.Character;
 using MiniJameGam9.Score;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,8 +8,13 @@ namespace MiniJameGam9.UI
 {
     public class ScoreContainer : MonoBehaviour
     {
+        [SerializeField]
+        private Transform _bestPos;
+
         private void Start()
         {
+            var go = Instantiate(ScoreManager.Instance.GetAll().First().Key.Prefab, _bestPos.position, Quaternion.identity);
+            Destroy(go.GetComponent<ACharacterController>());
             foreach (var elem in ScoreManager.Instance.GetAll())
             {
                 AddScore(elem.Key, elem.Value);
