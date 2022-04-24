@@ -30,7 +30,7 @@ namespace MiniJameGam9.Weapon
         {
             if (otherACC != null)
             {
-                otherACC.CanMove = true;
+                otherACC.CanMoveAfterStun();
             }
         }
 
@@ -47,10 +47,6 @@ namespace MiniJameGam9.Weapon
                     var dist = Vector3.Distance(transform.position, Caster.position);
                     if (dist < _stopRange)
                     {
-                        if (otherACC != null)
-                        {
-                            otherACC.CanMove = true;
-                        }
                         Destroy(gameObject);
                     }
                 }

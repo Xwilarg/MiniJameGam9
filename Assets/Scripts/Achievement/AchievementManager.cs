@@ -71,9 +71,10 @@ namespace MiniJameGam9.Achievement
                     $"Kill a total of {data.ValueMax} enemies" :
                     $"Kill a total of {data.ValueMax} enemies with a {data.WeaponConstraint.name}",
                 AchievementType.Win => $"Win one game",
+                AchievementType.DoubleWin => $"Play a game with a friend where you are ranked first and second",
                 AchievementType.GrappingHook => $"Grab a total of {data.ValueMax} enemies with your chain",
                 AchievementType.HookKill => $"Kill a total of {data.ValueMax} enemies with your chain",
-                AchievementType.HookCancel => "Cancel the chain of an enemy using your chain",
+                AchievementType.HookCancel => $"Cancel a total of {data.ValueMax} chain of an enemy using your own",
                 _ => ""
             };
         }
@@ -124,6 +125,20 @@ namespace MiniJameGam9.Achievement
                 var ach = _achievements[i];
                 var prog = _progress[i];
                 if (!prog.IsAchieved && ach.Type == AchievementType.Win)
+                {
+                    Progress(i);
+                }
+            }
+            UpdateSaves();
+        }
+
+        public void DoubleWin()
+        {
+            for (int i = 0; i < _achievements.Length; i++)
+            {
+                var ach = _achievements[i];
+                var prog = _progress[i];
+                if (!prog.IsAchieved && ach.Type == AchievementType.DoubleWin)
                 {
                     Progress(i);
                 }

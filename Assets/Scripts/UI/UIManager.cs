@@ -45,9 +45,14 @@ namespace MiniJameGam9.UI
             {
                 ScoreManager.Instance.ClearAll();
                 SpawnManager.Instance.UploadAllScores();
-                if (!ScoreManager.Instance.GetAll().First().Key.IsAi)
+                var scores = ScoreManager.Instance.GetAll().ToArray();
+                if (!scores.First().Key.IsAi)
                 {
                     AchievementManager.Instance.Win();
+                }
+                if (!scores[0].Key.IsAi && !scores[1].Key.IsAi)
+                {
+                    AchievementManager.Instance.DoubleWin();
                 }
                 SceneManager.LoadScene("GameOver");
             }

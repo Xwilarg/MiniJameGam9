@@ -28,3 +28,7 @@ MonoBehaviour:
   ExplosionRadius: 0
   TimeBeforeExplode: 0
   FragIcon: {fileID: -1628883964, guid: 7e7ac7da253a5984f8408c0bc420b290, type: 3}
+  DoesShowLaser: 0
+  DisplayShotgun: 0
+  DisplaySniper: 1
+  DisplayGrenade: 0

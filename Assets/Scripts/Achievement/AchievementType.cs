@@ -4,6 +4,7 @@
     {
         Kill,
         Win,
+        DoubleWin,
         GrappingHook,
         HookKill,
         HookCancel
