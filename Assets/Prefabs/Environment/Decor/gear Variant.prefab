@@ -53,7 +53,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 40a5dedd88811ab4c81395ec27c845fa, type: 3}
       propertyPath: m_Name
-      value: gear
+      value: gear Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 40a5dedd88811ab4c81395ec27c845fa, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40a5dedd88811ab4c81395ec27c845fa, type: 3}
+--- !u!1 &3111268550230060318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 40a5dedd88811ab4c81395ec27c845fa, type: 3}
+  m_PrefabInstance: {fileID: 2876704579171618895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &-402557369234697878
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3111268550230060318}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

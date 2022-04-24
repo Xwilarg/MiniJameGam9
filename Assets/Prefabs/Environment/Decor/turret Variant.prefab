@@ -53,7 +53,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cf42f944d7c97d449ab109e9b67dd921, type: 3}
       propertyPath: m_Name
-      value: turret
+      value: turret Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cf42f944d7c97d449ab109e9b67dd921, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf42f944d7c97d449ab109e9b67dd921, type: 3}
+--- !u!1 &7778122377220963812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cf42f944d7c97d449ab109e9b67dd921, type: 3}
+  m_PrefabInstance: {fileID: 7435470225178919093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &4463290340653551675
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778122377220963812}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
