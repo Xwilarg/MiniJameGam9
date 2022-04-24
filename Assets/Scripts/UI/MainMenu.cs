@@ -56,6 +56,14 @@ namespace MiniJameGam9.UI
                     _phase = 0;
                 }
             }
+            else if (_phase == -2)
+            {
+                Camera.main.transform.rotation = Quaternion.Lerp(Quaternion.Euler(0f, 180f, 0f), Quaternion.Euler(0f, 90f, 0f), _timer);
+                if (_timer <= 0f)
+                {
+                    _phase = 0;
+                }
+            }
             else if (_phase == 2)
             {
                 _blackScreen.color = new(0f, 0f, 0f, (2f - _timer) / 2f);
@@ -88,6 +96,11 @@ namespace MiniJameGam9.UI
                         _phase = -1;
                         _timer = 1f;
                         _door.GoUp = false;
+                    }
+                    else if (hit.collider.name == "Menu")
+                    {
+                        _phase = -2;
+                        _timer = 1f;
                     }
                 }
             }
