@@ -216,5 +216,10 @@ namespace MiniJameGam9.Character.AI
                 _debugText.text = $"{_currBehavior}";
             }
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            OnCollision(collision);
+        }
     }
 }

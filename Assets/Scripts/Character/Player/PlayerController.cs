@@ -164,5 +164,10 @@ namespace MiniJameGam9.Character.Player
         {
             Container.WeaponDisplay.sprite = CurrentWeapon.FragIcon;
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            OnCollision(collision);
+        }
     }
 }
