@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AI Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6320282918773000440, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2419827b99f586b4b89077d86ac8c7e0, type: 2}
     m_RemovedComponents:
     - {fileID: 3933596238710000637, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
     - {fileID: 3933596238710000632, guid: 0b97f24b47e71b541ab0c3e9336fce2b, type: 3}
