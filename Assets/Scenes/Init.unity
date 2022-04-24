@@ -531,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[6].ValueMax
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[7].ValueMax

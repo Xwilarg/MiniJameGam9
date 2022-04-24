@@ -73,7 +73,7 @@ namespace MiniJameGam9.Achievement
                 AchievementType.Win => $"Win one game",
                 AchievementType.GrappingHook => $"Grab a total of {data.ValueMax} enemies with your chain",
                 AchievementType.HookKill => $"Kill a total of {data.ValueMax} enemies with your chain",
-                AchievementType.HookCancel => "Cancel the chain of an enemy using your chain",
+                AchievementType.HookCancel => $"Cancel a total of {data.ValueMax} chain of an enemy using your own",
                 _ => ""
             };
         }
