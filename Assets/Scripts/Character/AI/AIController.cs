@@ -1,5 +1,6 @@
 ﻿using MiniJameGam9.Debugging;
 using MiniJameGam9.SO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -22,6 +23,7 @@ namespace MiniJameGam9.Character.AI
         private AIBehavior _currBehavior;
         private RaycastHit? _damageTaken; // TODO: Need to forget target when dead
         private float _forgetTimer = -1f;
+        private float _lastChange;
 
         private void Awake()
         {
@@ -141,47 +143,50 @@ namespace MiniJameGam9.Character.AI
                 }
             }
 
-            // Choose next behavior
-            _agent.updateRotation = true;
-
-            // Looting weapon if we are still with the base one is our priority
-            if (!HaveImprovedWeapon && rays.Any(x => x.collider.CompareTag("WeaponCase")))
+            if (_lastChange - Time.unscaledTime < .5f)
             {
-                UpdateBehavior(AIBehavior.Looting);
-                _agent.SetDestination(rays.First(x => x.collider.CompareTag("WeaponCase")).point);
-                UpdateDamageSource();
-            }
-            else if (rays.Any(x => x.collider.CompareTag("Player")))
-            {
-                UpdateBehavior(AIBehavior.Chasing);
+                // Choose next behavior
+                _agent.updateRotation = true;
 
-                // Look at the closest target
-                var closest = rays.Where(x => x.collider.CompareTag("Player")).OrderBy(x => DistanceApprox(transform.position, x.point)).First();
-                if (Vector3.Distance(transform.position, closest.point) < 10f)
+                // Looting weapon if we are still with the base one is our priority
+                if (!HaveImprovedWeapon && rays.Any(x => x.collider.CompareTag("WeaponCase")))
                 {
-                    // We are already close enough, no point going closer
-                    _agent.SetDestination(transform.position);
+                    UpdateBehavior(AIBehavior.Looting);
+                    _agent.SetDestination(rays.First(x => x.collider.CompareTag("WeaponCase")).point);
+                    UpdateDamageSource();
+                }
+                else if (rays.Any(x => x.collider.CompareTag("Player")))
+                {
+                    UpdateBehavior(AIBehavior.Chasing);
+
+                    // Look at the closest target
+                    var closest = rays.Where(x => x.collider.CompareTag("Player")).OrderBy(x => DistanceApprox(transform.position, x.point)).First();
+                    if (Vector3.Distance(transform.position, closest.point) < 10f)
+                    {
+                        // We are already close enough, no point going closer
+                        _agent.SetDestination(transform.position);
+                    }
+                    else
+                    {
+                        _agent.SetDestination(closest.point);
+                    }
+
+                    // We keep looking at the target
+                    LookAt(closest.point);
+
+                    _damageTaken = null;
+
+                    if (Vector3.Distance(closest.point, transform.position) > 5f)
+                    {
+                        ThrowChain();
+                    }
+
+                    Shoot();
                 }
                 else
                 {
-                    _agent.SetDestination(closest.point);
+                    UpdateDamageSource();
                 }
-
-                // We keep looking at the target
-                LookAt(closest.point);
-
-                _damageTaken = null;
-
-                if (Vector3.Distance(closest.point, transform.position) > 5f)
-                {
-                    ThrowChain();
-                }
-
-                Shoot();
-            }
-            else
-            {
-                UpdateDamageSource();
             }
         }
 
@@ -204,6 +209,7 @@ namespace MiniJameGam9.Character.AI
 
         private void UpdateBehavior(AIBehavior value)
         {
+            _lastChange = Time.unscaledTime;
             _currBehavior = value;
             if (Application.isEditor)
             {
