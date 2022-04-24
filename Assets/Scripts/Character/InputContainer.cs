@@ -11,7 +11,7 @@ namespace MiniJameGam9.Character
         public PlayerController ParentController { set; get; }
         public TMP_Text AmmoText;
         public Image WeaponDisplay;
-        public Image ReloadChain;
+        public Image ChainCooldown;
 
         public bool IsKeyboard => GetComponent<PlayerInput>().currentControlScheme == "Keyboard&Mouse";
 
