@@ -14,7 +14,7 @@ namespace MiniJameGam9.Weapon
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (Weapon.ExplosionRadius > 0f)
+            if (Weapon.ExplosionRadius > 0f && !collision.collider.CompareTag("Player"))
                 StartCoroutine(Explode());
             else
                 Damage(collision.collider.transform);
