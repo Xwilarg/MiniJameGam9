@@ -87,7 +87,7 @@ namespace MiniJameGam9.Character.AI
 
         protected override void OnCanMoveChange(bool value)
         {
-            _agent.updatePosition = value;
+            _agent.enabled = value;
             if (!value && Application.isEditor)
             {
                 _debugText.text = "Stunned";
@@ -172,7 +172,7 @@ namespace MiniJameGam9.Character.AI
 
                 _damageTaken = null;
 
-                if (Vector3.Distance(closest.point, transform.position) > 10)
+                if (Vector3.Distance(closest.point, transform.position) > 5f)
                 {
                     ThrowChain();
                 }

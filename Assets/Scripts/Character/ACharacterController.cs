@@ -32,6 +32,16 @@ namespace MiniJameGam9.Character
         protected virtual void OnCanMoveChange(bool value)
         { }
 
+        public void CanMoveAfterStun()
+        {
+            StartCoroutine(CanMoveAfterStunE());
+        }
+        private IEnumerator CanMoveAfterStunE()
+        {
+            yield return new WaitForSeconds(1f);
+            CanMove = true;
+        }
+
         public bool CanMove
         {
             set
