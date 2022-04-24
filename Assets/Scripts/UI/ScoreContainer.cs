@@ -1,6 +1,7 @@
 ﻿using MiniJameGam9.Character;
 using MiniJameGam9.Score;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MiniJameGam9.UI
 {
@@ -27,6 +28,11 @@ namespace MiniJameGam9.UI
             cmp.Assist.text = info.Assist.ToString();
             cmp.Kill.text = info.Kill.ToString();
             cmp.DamageDealth.text = info.DamageDealt.ToString();
+        }
+
+        public void ToMainMenu()
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
 }
