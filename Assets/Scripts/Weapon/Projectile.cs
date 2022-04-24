@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using MiniJameGam9.Character;
 using MiniJameGam9.SO;
+using MiniJameGam9.Achievement;
 
 namespace MiniJameGam9.Weapon
 {
@@ -33,9 +34,13 @@ namespace MiniJameGam9.Weapon
             if (target.CompareTag("Player"))
             {
                 Profile.DamageDealt += Weapon.Damage;
-                if (target.GetComponent<ACharacterController>().TakeDamage(Weapon.Damage, (ShootOrigin - transform.position).normalized, Profile, Weapon))
+                if (target.GetComponent<ACharacterController>().TakeDamage(Weapon.Damage, (ShootOrigin - transform.position).normalized, Profile, Weapon.FragIcon))
                 {
                     Profile.Kill++;
+                    if (!Profile.IsAi)
+                    {
+                        AchievementManager.Instance.UpdateKillAchievement(Weapon);
+                    }
                 }
             }
             if (Weapon.DestroyProjectileEffect != null)

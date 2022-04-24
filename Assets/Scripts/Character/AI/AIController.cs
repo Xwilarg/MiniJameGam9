@@ -73,7 +73,7 @@ namespace MiniJameGam9.Character.AI
                            hit: out RaycastHit hit
                            ))
                 {
-                    if (hit.collider.name != _damageTaken.Value.collider.name)
+                    if (_damageTaken.Value.collider == null || hit.collider.name != _damageTaken.Value.collider.name)
                     {
                         _damageTaken = null;
                     }
@@ -85,8 +85,33 @@ namespace MiniJameGam9.Character.AI
             }
         }
 
+        protected override void OnCanMoveChange(bool value)
+        {
+            _agent.updatePosition = value;
+            if (!value && Application.isEditor)
+            {
+                _debugText.text = "Stunned";
+            }
+        }
+
         private void Update()
         {
+            CheckForFallDeath();
+
+            if (_forgetTimer > 0f)
+            {
+                _forgetTimer -= Time.deltaTime;
+                if (_forgetTimer <= 0f)
+                {
+                    _damageTaken = null;
+                }
+            }
+
+            if (!CanMove)
+            {
+                return;
+            }
+
             if (Vector2.Distance(FlattenY(transform.position), FlattenY(_agent.destination)) < .1f)
             {
                 if (_currBehavior != AIBehavior.Wandering) // We lost the player or got our loot, going back at wandering
@@ -97,15 +122,6 @@ namespace MiniJameGam9.Character.AI
                 else
                 {
                     GetNextNode();
-                }
-            }
-
-            if (_forgetTimer > 0f)
-            {
-                _forgetTimer -= Time.deltaTime;
-                if (_forgetTimer <= 0f)
-                {
-                    _damageTaken = null;
                 }
             }
 
@@ -155,6 +171,12 @@ namespace MiniJameGam9.Character.AI
                 LookAt(closest.point);
 
                 _damageTaken = null;
+
+                if (Vector3.Distance(closest.point, transform.position) > 10)
+                {
+                    ThrowChain();
+                }
+
                 Shoot();
             }
             else

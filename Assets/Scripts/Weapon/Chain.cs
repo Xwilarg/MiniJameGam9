@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using MiniJameGam9.Character;
 
 namespace MiniJameGam9.Weapon
 {
@@ -10,7 +11,11 @@ namespace MiniJameGam9.Weapon
         [SerializeField] private float _speed, _returnSpeed;
         [SerializeField] private float _range, _stopRange;
 
+        [SerializeField]
+        private Sprite _grappinIcon;
+
         public Transform Caster { set; get; }
+        public Profile Profile { set; get; }
         private Transform _collidedWith;
         private LineRenderer _line;
         private bool _hasCollided;
@@ -32,7 +37,13 @@ namespace MiniJameGam9.Weapon
                     transform.LookAt(Caster);
                     var dist = Vector3.Distance(transform.position, Caster.position);
                     if (dist < _stopRange)
+                    {
+                        if (otherACC != null)
+                        {
+                            otherACC.CanMove = true;
+                        }
                         Destroy(gameObject);
+                    }
                 }
                 else
                 {
@@ -50,9 +61,35 @@ namespace MiniJameGam9.Weapon
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!_hasCollided && _tagsToCheck.Contains(other.gameObject.tag))
-                Collision(other.transform);
+            if (!_hasCollided)
+            {
+                if (_tagsToCheck.Contains(other.gameObject.tag))
+                {
+                    if (other.gameObject.CompareTag("Player"))
+                    {
+                        otherACC = other.gameObject.GetComponent<ACharacterController>();
+                        otherACC.CanMove = false;
+                        if (otherACC.TakeDamage(5, transform.position, Profile, _grappinIcon))
+                        {
+                            Collision(null);
+                        }
+                        else
+                        {
+                            Collision(other.transform);
+                        }
+                    }
+                    else
+                    {
+                        Collision(other.transform);
+                    }
+                }
+                else
+                {
+                    Collision(null);
+                }
+            }
         }
+        private ACharacterController otherACC = null;
 
         void Collision(Transform col)
         {

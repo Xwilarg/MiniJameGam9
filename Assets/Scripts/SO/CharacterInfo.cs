@@ -6,5 +6,6 @@ namespace MiniJameGam9.SO
     public class CharacterInfo : ScriptableObject
     {
         public int BaseHealth;
+        public float ChainDelay;
     }
 }

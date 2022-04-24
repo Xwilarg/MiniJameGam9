@@ -18,6 +18,10 @@ namespace MiniJameGam9.Weapon
 
         public Profile GetAssist(Profile target, Profile except)
         {
+            if (!_damages.ContainsKey(target))
+            {
+                return null;
+            }
             return _damages[target].Where(x => x.Key != except).OrderByDescending(x => x.Value).Select(x => x.Key).FirstOrDefault();
         }
 
@@ -28,6 +32,10 @@ namespace MiniJameGam9.Weapon
 
         public void AddDamage(Profile target, Profile attacker, int damage)
         {
+            if (attacker == null)
+            {
+                return;
+            }
             if (!_damages.ContainsKey(target))
             {
                 _damages.Add(target, new());

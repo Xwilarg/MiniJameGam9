@@ -22,6 +22,23 @@ namespace MiniJameGam9.Character
         [SerializeField]
         private Transform _chain;
 
+        [SerializeField]
+        private Sprite _defaultDeathIcon;
+
+        private bool _canMove = true;
+        protected virtual void OnCanMoveChange(bool value)
+        { }
+
+        public bool CanMove
+        {
+            set
+            {
+                OnCanMoveChange(value);
+                _canMove = value;
+            }
+            get => _canMove;
+        }
+
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
 
@@ -29,6 +46,7 @@ namespace MiniJameGam9.Character
 
         private int _health;
         protected int _projectilesInMagazine;
+        private bool _canUseChain = true;
 
         protected void Init()
         {
@@ -55,7 +73,7 @@ namespace MiniJameGam9.Character
                     var forward = (_gunOut.position - transform.position).normalized;
                     var right = Quaternion.AngleAxis(90f, Vector3.up) * forward;
                     rb.AddForce(
-                        forward * CurrentWeapon.ProjectileVelocity + 
+                        forward * CurrentWeapon.ProjectileVelocity +
                         right * CurrentWeapon.ProjectileVelocity * CurrentWeapon.HorizontalDeviation * Random.Range(-1f, 1f) +
                         Vector3.up * CurrentWeapon.VerticalDeviation
                     , ForceMode.Impulse);
@@ -103,7 +121,7 @@ namespace MiniJameGam9.Character
             _canShoot = true;
         }
 
-        public bool TakeDamage(int value, Vector3 from, Profile killer, WeaponInfo weapon)
+        public bool TakeDamage(int value, Vector3 from, Profile killer, Sprite icon)
         {
             if (_health == 0)
             {
@@ -119,12 +137,16 @@ namespace MiniJameGam9.Character
             {
                 Profile.Death++;
                 var assist = DamageManager.Instance.GetAssist(Profile, killer);
-                var inc = killer.Name;
-                if (assist != null)
+                var inc = "";
+                if (killer != null)
                 {
-                    inc += $" + {assist.Name}";
+                    inc = killer.Name;
+                    if (assist != null)
+                    {
+                        inc += $" + {assist.Name}";
+                    }
                 }
-                UIManager.Instance.ShowFrag(inc, Profile.Name, weapon.FragIcon, !killer.IsAi || !Profile.IsAi);
+                UIManager.Instance.ShowFrag(inc, Profile.Name, icon, (killer != null && !killer.IsAi) || !Profile.IsAi);
                 DamageManager.Instance.AddDeath(Profile);
                 Destroy(gameObject);
                 SpawnManager.Instance.Spawn(Profile);
@@ -132,6 +154,14 @@ namespace MiniJameGam9.Character
             }
             OnDamageTaken(from);
             return false;
+        }
+
+        protected void CheckForFallDeath()
+        {
+            if (transform.position.y < -10f)
+            {
+                TakeDamage(1000, Vector3.zero, null, _defaultDeathIcon);
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -145,10 +175,22 @@ namespace MiniJameGam9.Character
             }
         }
 
-         public void ThrowChain()
+        public void ThrowChain()
         {
-            var go = Instantiate(_chain, transform.position + transform.forward, transform.rotation);
-            go.GetComponent<Chain>().Caster = transform;
+            if (_canUseChain)
+            {
+                _canUseChain = false;
+                var go = Instantiate(_chain, transform.position + transform.forward, transform.rotation);
+                go.GetComponent<Chain>().Caster = transform;
+                go.GetComponent<Chain>().Profile = Profile;
+                StartCoroutine(ReloadChain());
+            }
+        }
+
+        private IEnumerator ReloadChain()
+        {
+            yield return new WaitForSeconds(_cInfo.ChainDelay);
+            _canUseChain = true;
         }
     }
 }
