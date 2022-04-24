@@ -1,4 +1,8 @@
-﻿using TMPro;
+﻿using MiniJameGam9.Achievement;
+using MiniJameGam9.Character;
+using MiniJameGam9.Score;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +21,7 @@ namespace MiniJameGam9.UI
         [SerializeField]
         private TMP_Text _timerManager;
 
-        private float _timer = 5f * 60f;
+        private float _timer = 3f * 60f;
 
         private void Awake()
         {
@@ -39,6 +43,12 @@ namespace MiniJameGam9.UI
             _timerManager.text = $"{(int)(_timer / 60)}:{ToTwoDigits((int)(_timer % 60))}";
             if (_timer <= 0f)
             {
+                ScoreManager.Instance.ClearAll();
+                SpawnManager.Instance.UploadAllScores();
+                if (!ScoreManager.Instance.GetAll().First().Key.IsAi)
+                {
+                    AchievementManager.Instance.Win();
+                }
                 SceneManager.LoadScene("GameOver");
             }
         }

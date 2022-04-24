@@ -12,17 +12,7 @@ namespace MiniJameGam9.Achievement
         {
             Instance = this;
             DontDestroyOnLoad(this);
-        }
 
-        [SerializeField]
-        private AchievementData[] _achievements;
-
-        private AchievementProgress[] _progress;
-
-        private string _achievementPath;
-
-        public void Start()
-        {
             _achievementPath = $"{Application.persistentDataPath}/achievement.bin";
             _progress = new AchievementProgress[_achievements.Length];
             for (int i = 0; i < _progress.Length; i++)
@@ -51,6 +41,24 @@ namespace MiniJameGam9.Achievement
             }
         }
 
+        [SerializeField]
+        private AchievementData[] _achievements;
+
+        private AchievementProgress[] _progress;
+
+        private string _achievementPath;
+
+        private void Progress(int i)
+        {
+            var ach = _achievements[i];
+            var prog = _progress[i];
+            prog.Progress++;
+            if (prog.Progress >= ach.ValueMax)
+            {
+                prog.IsAchieved = true;
+            }
+        }
+
         public void UpdateKillAchievement(WeaponInfo weapon)
         {
             for (int i = 0; i < _achievements.Length; i++)
@@ -59,11 +67,21 @@ namespace MiniJameGam9.Achievement
                 var prog = _progress[i];
                 if (!prog.IsAchieved && ach.Type == AchievementType.Kill && (ach.WeaponConstraint == null || ach.WeaponConstraint == weapon))
                 {
-                    prog.Progress++;
-                    if (prog.Progress >= ach.ValueMax)
-                    {
-                        prog.IsAchieved = true;
-                    }
+                    Progress(i);
+                }
+            }
+            UpdateSaves();
+        }
+
+        public void Win()
+        {
+            for (int i = 0; i < _achievements.Length; i++)
+            {
+                var ach = _achievements[i];
+                var prog = _progress[i];
+                if (!prog.IsAchieved && ach.Type == AchievementType.Win)
+                {
+                    Progress(i);
                 }
             }
             UpdateSaves();
