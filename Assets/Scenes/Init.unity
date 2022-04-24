@@ -316,6 +316,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PersistentManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[0].ValueMax
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[1].ValueMax
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[2].ValueMax
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
 --- !u!1 &1491200375

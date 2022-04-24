@@ -48,6 +48,33 @@ namespace MiniJameGam9.Achievement
 
         private string _achievementPath;
 
+        public int GetAchievementCount() => _achievements.Length;
+
+        public void SetUI(AchievementUI ui, int i)
+        {
+            var ach = _achievements[i];
+            var prog = _progress[i];
+            if (!prog.IsAchieved)
+            {
+                ui.Image.color = Color.black;
+            }
+            ui.Title.text = ach.Name + (prog.IsAchieved ? "" : $" ({prog.Progress} / {ach.ValueMax})");
+            ui.Description.text = GetDescription(ach);
+        }
+
+        private string GetDescription(AchievementData data)
+        {
+            return data.Type switch
+            {
+                AchievementType.Kill =>
+                    data.WeaponConstraint == null ?
+                    $"Kill a total of {data.ValueMax} enemies" :
+                    $"Kill a total of {data.ValueMax} enemies with a {data.WeaponConstraint.name}",
+                AchievementType.Win => $"Win a total of {data.ValueMax} games",
+                _ => ""
+            };
+        }
+
         private void Progress(int i)
         {
             var ach = _achievements[i];
