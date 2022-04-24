@@ -459,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[2].Name
@@ -506,6 +506,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[8].Name
+      value: BFF
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[8].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[0].ValueMax
       value: 25
       objectReference: {fileID: 0}
@@ -538,6 +546,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[8].ValueMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[2].WeaponConstraint
       value: 
       objectReference: {fileID: 11400000, guid: a8c1922ac0ed1954fbebb6850d9a7223, type: 2}
@@ -563,6 +575,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[7].IsPersistentBetweenRounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[8].IsPersistentBetweenRounds
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
