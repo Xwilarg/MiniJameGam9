@@ -83,7 +83,15 @@ namespace MiniJameGam9.Character
             if (_canShoot)
             {
                 _canShoot = false;
-                var projectilesShot = _projectilesInMagazine >= CurrentWeapon.ProjectileCount ? CurrentWeapon.ProjectileCount : _projectilesInMagazine;
+                int projectilesShot;
+                if (!CurrentWeapon.EndlessAmmo)
+                {
+                    projectilesShot = _projectilesInMagazine >= CurrentWeapon.ProjectileCount ? CurrentWeapon.ProjectileCount : _projectilesInMagazine;
+                }
+                else
+                {
+                    projectilesShot = CurrentWeapon.ProjectileCount;
+                }
                 for (int i = 0; i < projectilesShot; i++)
                 {
                     if (CurrentWeapon.ShotEffect != null)
@@ -109,7 +117,7 @@ namespace MiniJameGam9.Character
                     proj.ShootOrigin = transform.position;
                 }
                 _projectilesInMagazine -= projectilesShot;
-                StartCoroutine(_projectilesInMagazine == 0 ? Reload() : WaitForShootAgain());
+                StartCoroutine(_projectilesInMagazine == 0 && !CurrentWeapon.EndlessAmmo ? Reload() : WaitForShootAgain());
                 return true;
             }
             return false;
@@ -127,9 +135,9 @@ namespace MiniJameGam9.Character
             else
             {
                 DisableAll();
-                OnNewWeapon();
                 _hhandgun.SetActive(true);
                 _overrideWeapon = null; // If we have another weapon, we throw it away
+                OnNewWeapon();
                 _projectilesInMagazine = _baseWeapon.ProjectilesInMagazine; // TODO: Maybe have old amount of projectile before weapon change instead?
             }
             _canShoot = true;

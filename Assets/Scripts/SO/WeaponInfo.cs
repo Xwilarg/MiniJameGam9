@@ -62,5 +62,7 @@ namespace MiniJameGam9.SO
 
         [Header("Hands config")]
         public bool DisplayShotgun, DisplaySniper, DisplayGrenade;
+
+        public bool EndlessAmmo;
     }
 }

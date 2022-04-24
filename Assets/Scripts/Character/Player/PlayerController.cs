@@ -116,7 +116,14 @@ namespace MiniJameGam9.Character.Player
 
         private void UpdateUI()
         {
-            Container.AmmoText.text = $"{_projectilesInMagazine}";
+            if (CurrentWeapon.EndlessAmmo)
+            {
+                Container.AmmoText.text = "Åá";
+            }
+            else
+            {
+                Container.AmmoText.text = $"{_projectilesInMagazine}";
+            }
         }
 
         public override bool Shoot()

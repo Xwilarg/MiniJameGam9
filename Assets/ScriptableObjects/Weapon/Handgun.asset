@@ -21,10 +21,15 @@ MonoBehaviour:
   IsAffectedByGravity: 0
   ProjectilePrefab: {fileID: 2313055209670991244, guid: b2e969f991491404dbb1cc3fc87c78b3, type: 3}
   ProjectileCount: 1
-  ProjectilesInMagazine: 12
+  ProjectilesInMagazine: 0
   ProjectileVelocity: 50
   HorizontalDeviation: 0
   VerticalDeviation: 0.1
   ExplosionRadius: 0
   TimeBeforeExplode: 0
   FragIcon: {fileID: -701596367, guid: 7e7ac7da253a5984f8408c0bc420b290, type: 3}
+  DoesShowLaser: 0
+  DisplayShotgun: 0
+  DisplaySniper: 0
+  DisplayGrenade: 0
+  EndlessAmmo: 1
