@@ -34,9 +34,9 @@ namespace MiniJameGam9.Weapon
                     var dist = Vector3.Distance(transform.position, Caster.position);
                     if (dist < _stopRange)
                     {
-                        if (_collidedWith != null)
+                        if (otherACC != null)
                         {
-                            _collidedWith.GetComponent<ACharacterController>().CanMove = false;
+                            otherACC.CanMove = true;
                         }
                         Destroy(gameObject);
                     }
@@ -61,11 +61,13 @@ namespace MiniJameGam9.Weapon
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
-                    other.gameObject.GetComponent<ACharacterController>().CanMove = false;
+                    otherACC = other.gameObject.GetComponent<ACharacterController>();
+                    otherACC.CanMove = false;
                 }
                 Collision(other.transform);
             }
         }
+        private ACharacterController otherACC = null;
 
         void Collision(Transform col)
         {
