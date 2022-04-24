@@ -126,7 +126,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9901250d7fe8ab546891bde61bfd4beb, type: 2}
+  - {fileID: 2100000, guid: 8d43b5f833507154aa787fa32fcfff02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -209,7 +209,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f83234af92f25d148adcf31f00b8443f, type: 2}
+  - {fileID: 2100000, guid: 9e6a924f924931e42aa5a983c4e9f80c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -292,7 +292,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2419827b99f586b4b89077d86ac8c7e0, type: 2}
+  - {fileID: 2100000, guid: 46ca2dfef9f09e141b3bf1e4cbb2534c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -557,6 +557,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7743024157594126857, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d720e7ec8b2b3174e8f3b8693615d812, type: 2}
+    - target: {fileID: -6366617773648712401, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49137703a04d29f489eea57147e667d9, type: 2}
+    - target: {fileID: -2302633643730633270, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49137703a04d29f489eea57147e667d9, type: 2}
+    - target: {fileID: -1442255224663843138, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e89b680a814bfe42948c29b50788072, type: 2}
     - target: {fileID: 919132149155446097, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
       propertyPath: m_Name
       value: Sniper with hands
@@ -565,6 +581,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1770269092968613683, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d720e7ec8b2b3174e8f3b8693615d812, type: 2}
+    - target: {fileID: 4540312293939454318, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d720e7ec8b2b3174e8f3b8693615d812, type: 2}
+    - target: {fileID: 6841003676236821729, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49137703a04d29f489eea57147e667d9, type: 2}
+    - target: {fileID: 9050817489936365762, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49137703a04d29f489eea57147e667d9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fb402662dee20b489e582f1adff60e1, type: 3}
 --- !u!4 &543450652987515699 stripped
@@ -628,6 +660,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6433418245104512094, guid: 6c95fe2daded2df41a350b7b13cf4172, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49137703a04d29f489eea57147e667d9, type: 2}
+    - target: {fileID: -5335230297767539747, guid: 6c95fe2daded2df41a350b7b13cf4172, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e89b680a814bfe42948c29b50788072, type: 2}
+    - target: {fileID: -5173061506176570699, guid: 6c95fe2daded2df41a350b7b13cf4172, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49137703a04d29f489eea57147e667d9, type: 2}
+    - target: {fileID: -4630543225724085680, guid: 6c95fe2daded2df41a350b7b13cf4172, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e89b680a814bfe42948c29b50788072, type: 2}
+    - target: {fileID: -4321352666442109652, guid: 6c95fe2daded2df41a350b7b13cf4172, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49137703a04d29f489eea57147e667d9, type: 2}
     - target: {fileID: 919132149155446097, guid: 6c95fe2daded2df41a350b7b13cf4172, type: 3}
       propertyPath: m_Name
       value: Shotgun with hands
@@ -636,6 +688,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6490834019539503772, guid: 6c95fe2daded2df41a350b7b13cf4172, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d720e7ec8b2b3174e8f3b8693615d812, type: 2}
+    - target: {fileID: 9198813329033547281, guid: 6c95fe2daded2df41a350b7b13cf4172, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d720e7ec8b2b3174e8f3b8693615d812, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c95fe2daded2df41a350b7b13cf4172, type: 3}
 --- !u!4 &543450652342700938 stripped
@@ -699,6 +759,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5696810516704424076, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7bd1007431214864c82d7b0cbf13edfa, type: 2}
+    - target: {fileID: -4964489145966345528, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7bd1007431214864c82d7b0cbf13edfa, type: 2}
+    - target: {fileID: -4828683353041511801, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a40e6766f051e344d9d5ea0ef2da7c45, type: 2}
+    - target: {fileID: -2669368535179147672, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c0ea0533275b8ff4486f9523d624e895, type: 2}
     - target: {fileID: 919132149155446097, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
       propertyPath: m_Name
       value: Nail gun with hands
@@ -707,6 +783,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1673618959947345214, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7bd1007431214864c82d7b0cbf13edfa, type: 2}
+    - target: {fileID: 2810215524664780120, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c0ea0533275b8ff4486f9523d624e895, type: 2}
+    - target: {fileID: 3599888468071615769, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d43b5f833507154aa787fa32fcfff02, type: 2}
+    - target: {fileID: 8736054615233459941, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d43b5f833507154aa787fa32fcfff02, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
 --- !u!4 &543450651930394389 stripped
