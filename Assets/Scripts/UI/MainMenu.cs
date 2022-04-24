@@ -57,7 +57,7 @@ namespace MiniJameGam9.UI
                     }
                     else if (hit.collider.name == "Credits")
                     {
-                        _door.GoUp = true;
+                        _door.GoUp = !_door.GoUp;
                     }
                 }
             }
