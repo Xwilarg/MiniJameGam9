@@ -2868,45 +2868,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
-      propertyPath: m_Size.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
-      propertyPath: m_Center.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: a464422bc6af3c4449dc38d341809ec0, type: 2}
-    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
-      propertyPath: m_CollectObjects
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
-      propertyPath: m_OverrideTileSize
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
-      propertyPath: m_OverrideVoxelSize
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 23800000, guid: 2279b9f5d7ae83943a69d41f43eaa12a, type: 2}
     - target: {fileID: 5904523238117464562, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
       propertyPath: m_Name
       value: NavMesh
