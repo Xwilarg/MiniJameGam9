@@ -78,10 +78,16 @@ namespace MiniJameGam9.Weapon
                     {
                         otherACC = other.gameObject.GetComponent<ACharacterController>();
                         otherACC.CanMove = false;
-                        AchievementManager.Instance.UpdateHookAchievement();
+                        if (!Profile.IsAi)
+                        {
+                            AchievementManager.Instance.UpdateHookAchievement();
+                        }
                         if (otherACC.TakeDamage(10, transform.position, Profile, _grappinIcon))
                         {
-                            AchievementManager.Instance.HookKill();
+                            if (!Profile.IsAi)
+                            {
+                                AchievementManager.Instance.HookKill();
+                            }
                             Collision(null);
                         }
                         else
