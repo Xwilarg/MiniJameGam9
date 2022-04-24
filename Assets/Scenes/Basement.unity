@@ -2899,6 +2899,14 @@ PrefabInstance:
       propertyPath: m_CollectObjects
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
+      propertyPath: m_OverrideTileSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904523238117464461, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
+      propertyPath: m_OverrideVoxelSize
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5904523238117464562, guid: 196aba2de0479bd489afdb67a12ce017, type: 3}
       propertyPath: m_Name
       value: NavMesh
