@@ -31,6 +31,7 @@ Transform:
   - {fileID: 543450651930394389}
   - {fileID: 543450652342700938}
   - {fileID: 543450652987515699}
+  - {fileID: 490276139338466186}
   m_Father: {fileID: 3933596238710000633}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -406,6 +407,7 @@ MonoBehaviour:
   _hhandgun: {fileID: 919132147744482735}
   _hshotgun: {fileID: 919132148406358320}
   _hsniper: {fileID: 919132148801616265}
+  _hgrenade: {fileID: 974500598343719216}
   _info: {fileID: 11400000, guid: 70359a8e24075cd439883a6bb6b05f29, type: 2}
 --- !u!120 &2416834665250607594
 LineRenderer:
@@ -810,4 +812,75 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0e186dc93dd03a40b738d4fa5a07b9d, type: 3}
   m_PrefabInstance: {fileID: 1811847422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &92173092320961633
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1034864346}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.18900001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2983532
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5120001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.608761
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.79335374
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -105
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_Name
+      value: grenade with hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+--- !u!4 &490276139338466186 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+  m_PrefabInstance: {fileID: 92173092320961633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &974500598343719216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fbd3af04aac8c454597ef7d4e5d7a903, type: 3}
+  m_PrefabInstance: {fileID: 92173092320961633}
   m_PrefabAsset: {fileID: 0}
