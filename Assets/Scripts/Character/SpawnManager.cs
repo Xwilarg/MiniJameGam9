@@ -1,8 +1,10 @@
-﻿using MiniJameGam9.Character.Player;
+﻿using MiniJameGam9.Character.AI;
+using MiniJameGam9.Character.Player;
 using MiniJameGam9.Score;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 namespace MiniJameGam9.Character
@@ -77,6 +79,10 @@ namespace MiniJameGam9.Character
             {
                 go.GetComponentInChildren<CharacterController>().enabled = false;
             }
+            else
+            {
+                go.GetComponentInChildren<NavMeshAgent>().enabled = false;
+            }
 
             go.transform.position = furthest.position;
 
@@ -88,6 +94,10 @@ namespace MiniJameGam9.Character
                 cc.Camera = p.Camera;
                 cc.Container = p.Container;
                 go.GetComponentInChildren<CharacterController>().enabled = true;
+            }
+            else
+            {
+                go.GetComponentInChildren<NavMeshAgent>().enabled = true;
             }
         }
 
