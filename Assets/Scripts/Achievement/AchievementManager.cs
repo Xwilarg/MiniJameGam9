@@ -70,7 +70,9 @@ namespace MiniJameGam9.Achievement
                     data.WeaponConstraint == null ?
                     $"Kill a total of {data.ValueMax} enemies" :
                     $"Kill a total of {data.ValueMax} enemies with a {data.WeaponConstraint.name}",
-                AchievementType.Win => $"Win a total of {data.ValueMax} games",
+                AchievementType.Win => $"Win a total one game",
+                AchievementType.GrappingHook => $"Grab a total of {data.ValueMax} enemies with your chain",
+                AchievementType.HookKill => $"Kill a total of {data.ValueMax} enemies with your chain",
                 _ => ""
             };
         }
@@ -100,6 +102,20 @@ namespace MiniJameGam9.Achievement
             UpdateSaves();
         }
 
+        public void UpdateHookAchievement()
+        {
+            for (int i = 0; i < _achievements.Length; i++)
+            {
+                var ach = _achievements[i];
+                var prog = _progress[i];
+                if (!prog.IsAchieved && ach.Type == AchievementType.GrappingHook)
+                {
+                    Progress(i);
+                }
+            }
+            UpdateSaves();
+        }
+
         public void Win()
         {
             for (int i = 0; i < _achievements.Length; i++)
@@ -107,6 +123,20 @@ namespace MiniJameGam9.Achievement
                 var ach = _achievements[i];
                 var prog = _progress[i];
                 if (!prog.IsAchieved && ach.Type == AchievementType.Win)
+                {
+                    Progress(i);
+                }
+            }
+            UpdateSaves();
+        }
+
+        public void HookKill()
+        {
+            for (int i = 0; i < _achievements.Length; i++)
+            {
+                var ach = _achievements[i];
+                var prog = _progress[i];
+                if (!prog.IsAchieved && ach.Type == AchievementType.HookKill)
                 {
                     Progress(i);
                 }

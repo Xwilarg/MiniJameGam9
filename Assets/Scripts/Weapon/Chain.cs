@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using MiniJameGam9.Character;
+using MiniJameGam9.Achievement;
 
 namespace MiniJameGam9.Weapon
 {
@@ -77,8 +78,10 @@ namespace MiniJameGam9.Weapon
                     {
                         otherACC = other.gameObject.GetComponent<ACharacterController>();
                         otherACC.CanMove = false;
-                        if (otherACC.TakeDamage(5, transform.position, Profile, _grappinIcon))
+                        AchievementManager.Instance.UpdateHookAchievement();
+                        if (otherACC.TakeDamage(10, transform.position, Profile, _grappinIcon))
                         {
+                            AchievementManager.Instance.HookKill();
                             Collision(null);
                         }
                         else

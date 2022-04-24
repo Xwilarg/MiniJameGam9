@@ -318,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[2].Name
@@ -334,10 +334,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[4].Name
-      value: Highlander
+      value: One Way Relationship
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[4].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[5].Name
+      value: Highlander
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[5].Type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
@@ -358,6 +366,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[4].ValueMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[5].ValueMax
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
@@ -369,7 +381,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
     - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[4].WeaponConstraint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
       propertyPath: _achievements.Array.data[4].IsPersistentBetweenRounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[5].IsPersistentBetweenRounds
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -3,6 +3,8 @@
     public enum AchievementType
     {
         Kill,
-        Win
+        Win,
+        GrappingHook,
+        HookKill
     }
 }
