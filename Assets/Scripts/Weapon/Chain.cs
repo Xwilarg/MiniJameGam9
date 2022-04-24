@@ -25,6 +25,14 @@ namespace MiniJameGam9.Weapon
             _line = transform.Find("Line").GetComponent<LineRenderer>();
         }
 
+        private void OnDestroy()
+        {
+            if (otherACC != null)
+            {
+                otherACC.CanMove = true;
+            }
+        }
+
         private void Update()
         {
             if (Caster)

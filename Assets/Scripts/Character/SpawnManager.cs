@@ -68,7 +68,13 @@ namespace MiniJameGam9.Character
             var characters = GameObject.FindGameObjectsWithTag("Player").Where(x => x.GetInstanceID() != go.GetInstanceID());
             var furthest = _spawnPoints.OrderByDescending(x => Vector3.Distance(x.position,
                 characters.OrderBy(y => Vector3.Distance(y.transform.position, x.position)).FirstOrDefault()?.transform?.position ?? Vector3.zero)).First();
-            go.transform.position = furthest.position + Vector3.up;
+
+            if (p.Container != null)
+            {
+                go.GetComponentInChildren<CharacterController>().enabled = false;
+            }
+
+            go.transform.position = furthest.position;
 
             if (p.Container != null)
             {
@@ -77,6 +83,7 @@ namespace MiniJameGam9.Character
                 cc.IsKeyboard = p.Container.IsKeyboard;
                 cc.Camera = p.Camera;
                 cc.Container = p.Container;
+                go.GetComponentInChildren<CharacterController>().enabled = true;
             }
         }
 

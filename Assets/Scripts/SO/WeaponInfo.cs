@@ -56,5 +56,8 @@ namespace MiniJameGam9.SO
 
         [Tooltip("Sprite shown in the frag list")]
         public Sprite FragIcon;
+
+        [Tooltip("Does show the laser")]
+        public bool DoesShowLaser;
     }
 }

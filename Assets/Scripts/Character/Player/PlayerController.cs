@@ -1,3 +1,4 @@
+using MiniJameGam9.Debugging;
 using MiniJameGam9.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,15 +18,49 @@ namespace MiniJameGam9.Character.Player
         private float _verticalSpeed;
         private Vector2 _mousePos;
 
+        private LineRenderer _lr;
+        private int _ignoreLayer;
+
         private void Start()
         {
             Init();
             _cc = GetComponent<CharacterController>();
+            _lr = GetComponent<LineRenderer>();
+            _ignoreLayer = 1 << 7;
+            _ignoreLayer |= 1 << 8;
+            _ignoreLayer = ~_ignoreLayer;
             UpdateUI();
         }
 
         private void Update()
         {
+            _lr.enabled = CanMove && !CurrentWeapon.IsAffectedByGravity;
+
+            if (_lr.enabled)
+            {
+                Vector3 outPos;
+                if (DebugManager.Instance.Raycast(
+                              id: "" + GetInstanceID() + "damage",
+                              origin: transform.position + transform.forward / 2f,
+                              direction: transform.forward,
+                              color: Color.green,
+                              hit: out RaycastHit hit,
+                              layer: _ignoreLayer
+                              ))
+                {
+                    outPos = hit.point;
+                }
+                else
+                {
+                    outPos = transform.position + transform.forward * 100f;
+                }
+                _lr.SetPositions(new[]
+                {
+                    transform.position,
+                    outPos
+                });
+            }
+
             CheckForFallDeath();
         }
 

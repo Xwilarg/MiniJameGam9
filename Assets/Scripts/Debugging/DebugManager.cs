@@ -18,9 +18,9 @@ namespace MiniJameGam9.Debugging
 
         private Dictionary<string, RaycastInfo> _raycasts = new();
 
-        public bool Raycast(string id, Vector3 origin, Vector3 direction, Color color, out RaycastHit hit)
+        public bool Raycast(string id, Vector3 origin, Vector3 direction, Color color, out RaycastHit hit, int layer = Physics.DefaultRaycastLayers)
         {
-            var isHit = Physics.Raycast(origin, direction, out hit);
+            var isHit = Physics.Raycast(origin, direction, out hit, float.PositiveInfinity, layer);
             if (IsDebugEnabled)
             {
                 var raycast = new RaycastInfo(origin, isHit ? hit.point : origin + (direction.normalized * 100f), color);
