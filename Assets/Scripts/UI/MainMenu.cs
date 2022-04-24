@@ -17,6 +17,9 @@ namespace MiniJameGam9.UI
         [SerializeField]
         private Image _blackScreen;
 
+        [SerializeField]
+        private DoorUp _door;
+
         private void Update()
         {
             _timer -= Time.deltaTime;
@@ -50,6 +53,11 @@ namespace MiniJameGam9.UI
                     {
                         _phase = 1;
                         _timer = 1f;
+                        _door.GoUp = false;
+                    }
+                    else if (hit.collider.name == "Credits")
+                    {
+                        _door.GoUp = true;
                     }
                 }
             }
