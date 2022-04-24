@@ -38,7 +38,7 @@ namespace MiniJameGam9.UI
                 Camera.main.transform.Translate(Vector3.forward * Time.deltaTime * 2f);
                 if (_timer <= 0f)
                 {
-                    SceneManager.LoadScene("Main");
+                    SceneManager.LoadScene("Basement");
                 }
             }
         }
