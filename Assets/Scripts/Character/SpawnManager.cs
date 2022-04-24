@@ -1,4 +1,5 @@
 ﻿using MiniJameGam9.Character.Player;
+using MiniJameGam9.Score;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,6 +23,20 @@ namespace MiniJameGam9.Character
         private GameObject _playerPrefab, _playerPrefabContainer, _aiPrefab;
 
         private readonly List<Profile> _profiles = new();
+
+        public void UploadAllScores()
+        {
+            foreach (var p in _profiles)
+            {
+                ScoreManager.Instance.AddProfile(p, new()
+                {
+                    Kill = p.Kill,
+                    Assist = p.Assist,
+                    DamageDealt = p.DamageDealt,
+                    Death = p.Death
+                });
+            }
+        }
 
         private void Start()
         {
@@ -69,7 +84,6 @@ namespace MiniJameGam9.Character
         {
             var player = new Profile(false, $"Player {_id++}", value.camera, value.GetComponent<InputContainer>());
             Init(value.gameObject, player);
-            value.GetComponentInChildren<CharacterController>().transform.Translate(Vector3.up);
             value.gameObject.GetComponentInChildren<ACharacterController>().Profile = player;
             _profiles.Add(player);
         }
