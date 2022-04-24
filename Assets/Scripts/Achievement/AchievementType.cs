@@ -5,6 +5,7 @@
         Kill,
         Win,
         GrappingHook,
-        HookKill
+        HookKill,
+        HookCancel
     }
 }

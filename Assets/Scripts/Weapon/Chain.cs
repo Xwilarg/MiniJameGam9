@@ -102,6 +102,10 @@ namespace MiniJameGam9.Weapon
                 }
                 else
                 {
+                    if (!Profile.IsAi && other.CompareTag("Hook"))
+                    {
+                        AchievementManager.Instance.HookCancel();
+                    }
                     Collision(null);
                 }
             }
