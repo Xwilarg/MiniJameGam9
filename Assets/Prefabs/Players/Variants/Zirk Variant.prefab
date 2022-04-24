@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3510656836440481695, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d43b5f833507154aa787fa32fcfff02, type: 2}
     - target: {fileID: 4255645829177675809, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
       propertyPath: m_Name
-      value: Zirk
+      value: Zirk Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4255645829177675814, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
       propertyPath: m_RootOrder
@@ -55,6 +59,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6498624382061138727, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e6a924f924931e42aa5a983c4e9f80c, type: 2}
+    - target: {fileID: 7634470061445518152, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46ca2dfef9f09e141b3bf1e4cbb2534c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
 --- !u!4 &8156734930029613570 stripped

@@ -55,6 +55,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timetrave hat
       objectReference: {fileID: 0}
+    - target: {fileID: 7504904809086486305, guid: 07e48fd37ca2a21448845ab7c21cc6a4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68eecf024a00dfc4e98a6704ac14cf1b, type: 2}
+    - target: {fileID: 8122731324077168602, guid: 07e48fd37ca2a21448845ab7c21cc6a4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 555541f7a5f54af45bf89250e586c0f7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07e48fd37ca2a21448845ab7c21cc6a4, type: 3}
 --- !u!1001 &3746444785934499110
@@ -64,6 +72,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3510656836440481695, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d43b5f833507154aa787fa32fcfff02, type: 2}
     - target: {fileID: 4255645829177675809, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
       propertyPath: m_Name
       value: Timetraveler65 Variant
@@ -112,6 +124,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6498624382061138727, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e6a924f924931e42aa5a983c4e9f80c, type: 2}
+    - target: {fileID: 7634470061445518152, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46ca2dfef9f09e141b3bf1e4cbb2534c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f62d4478caeac43b9367c9c77521a1, type: 3}
 --- !u!4 &644328088171146496 stripped
