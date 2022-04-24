@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MiniJameGam9.Achievement;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,6 +21,21 @@ namespace MiniJameGam9.UI
         [SerializeField]
         private DoorUp _door;
 
+        [SerializeField]
+        private Transform _achievementContainer;
+
+        [SerializeField]
+        private GameObject _achievementPrefab;
+
+        private void Start()
+        {
+            for (int i = 0; i < AchievementManager.Instance.GetAchievementCount(); i++)
+            {
+                var go = Instantiate(_achievementPrefab, _achievementContainer);
+                AchievementManager.Instance.SetUI(go.GetComponent<AchievementUI>(), i);
+            }
+        }
+
         private void Update()
         {
             _timer -= Time.deltaTime;
@@ -30,6 +46,22 @@ namespace MiniJameGam9.UI
                 {
                     _phase = 2;
                     _timer = 2f;
+                }
+            }
+            else if (_phase == -1)
+            {
+                Camera.main.transform.rotation = Quaternion.Lerp(Quaternion.Euler(0f, 90f, 0f), Quaternion.Euler(0f, 180f, 0f), _timer);
+                if (_timer <= 0f)
+                {
+                    _phase = 0;
+                }
+            }
+            else if (_phase == -2)
+            {
+                Camera.main.transform.rotation = Quaternion.Lerp(Quaternion.Euler(0f, 180f, 0f), Quaternion.Euler(0f, 90f, 0f), _timer);
+                if (_timer <= 0f)
+                {
+                    _phase = 0;
                 }
             }
             else if (_phase == 2)
@@ -58,6 +90,17 @@ namespace MiniJameGam9.UI
                     else if (hit.collider.name == "Credits")
                     {
                         _door.GoUp = !_door.GoUp;
+                    }
+                    else if (hit.collider.name == "Achievements")
+                    {
+                        _phase = -1;
+                        _timer = 1f;
+                        _door.GoUp = false;
+                    }
+                    else if (hit.collider.name == "Menu")
+                    {
+                        _phase = -2;
+                        _timer = 1f;
                     }
                 }
             }

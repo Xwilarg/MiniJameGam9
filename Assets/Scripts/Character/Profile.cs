@@ -4,9 +4,9 @@ namespace MiniJameGam9.Character
 {
     public class Profile
     {
-        public Profile(bool isAi, string name, Camera camera = null, InputContainer container = null)
-            => (IsAi, Name, Kill, Assist, Death, DamageDealt, Camera, Container)
-            = (isAi, name, 0, 0, 0, 0, camera, container);
+        public Profile(bool isAi, string name, GameObject prefab, Camera camera = null, InputContainer container = null)
+            => (IsAi, Name, Prefab, Kill, Assist, Death, DamageDealt, Camera, Container)
+            = (isAi, name, prefab, 0, 0, 0, 0, camera, container);
 
         public bool IsAi { get; set; }
         public string Name { get; set; }
@@ -16,6 +16,7 @@ namespace MiniJameGam9.Character
         public int DamageDealt { get; set; }
         public Camera Camera { get; set; }
         public InputContainer Container { get; set; }
+        public GameObject Prefab { set; get; }
 
         public static bool operator ==(Profile a, Profile b)
         {

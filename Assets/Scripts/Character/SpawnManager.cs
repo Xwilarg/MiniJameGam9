@@ -21,7 +21,7 @@ namespace MiniJameGam9.Character
         private Transform[] _spawnPoints;
 
         [SerializeField]
-        private GameObject _playerPrefab, _playerPrefabContainer, _aiPrefab;
+        private GameObject _playerPrefab, _playerPrefabContainer;
 
         private readonly List<Profile> _profiles = new();
 
@@ -39,18 +39,22 @@ namespace MiniJameGam9.Character
             }
         }
 
+        [SerializeField]
+        private GameObject[] _ais;
+
         private void Start()
         {
-            foreach (var elem in new string[] { "Astro", "Zirk", "Gradkal", "Jadith", "Kulutues", "Timetraveler65" })
+            var names = new string[] { "Astro", "Zirk", "Gradkal", "Jadith", "Kulutues", "Timetraveler65" };
+            for (int i = 0; i < names.Length; i++)
             {
-                var p = new Profile(true, elem);
-                Spawn(_aiPrefab, p);
+                var p = new Profile(true, names[i], _ais[i]);
+                Spawn(_ais[i], p);
                 _profiles.Add(p);
             }
         }
 
         public void Spawn(Profile p)
-            => Spawn(p.IsAi ? _aiPrefab : _playerPrefab, p);
+            => Spawn(p.Prefab, p);
 
         private void Spawn(GameObject go, Profile p)
         {
@@ -90,7 +94,7 @@ namespace MiniJameGam9.Character
         private int _id = 1;
         public void OnPlayerJoin(PlayerInput value)
         {
-            var player = new Profile(false, $"Player {_id++}", value.camera, value.GetComponent<InputContainer>());
+            var player = new Profile(false, $"Player {_id++}", _playerPrefab, value.camera, value.GetComponent<InputContainer>());
             Init(value.gameObject, player);
             value.gameObject.GetComponentInChildren<ACharacterController>().Profile = player;
             _profiles.Add(player);

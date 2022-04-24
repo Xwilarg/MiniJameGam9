@@ -316,6 +316,114 @@ PrefabInstance:
       propertyPath: m_Name
       value: PersistentManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[2].Name
+      value: Pomegranate
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[3].Name
+      value: High Noon
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[3].Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[4].Name
+      value: Hooked Into You
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[4].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[5].Name
+      value: One Way Relationship
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[5].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[6].Name
+      value: Mutual Love
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[6].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[7].Name
+      value: Highlander
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[7].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[0].ValueMax
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[1].ValueMax
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[2].ValueMax
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[3].ValueMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[4].ValueMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[5].ValueMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[6].ValueMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[7].ValueMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[2].WeaponConstraint
+      value: 
+      objectReference: {fileID: 11400000, guid: a8c1922ac0ed1954fbebb6850d9a7223, type: 2}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[3].WeaponConstraint
+      value: 
+      objectReference: {fileID: 11400000, guid: 44cbe4afbd6316b42b413ea0f504787e, type: 2}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[4].WeaponConstraint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[4].IsPersistentBetweenRounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[5].IsPersistentBetweenRounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[6].IsPersistentBetweenRounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164749782319805798, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
+      propertyPath: _achievements.Array.data[7].IsPersistentBetweenRounds
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ef062487edcd52409ee3c56a016d6e4, type: 3}
 --- !u!1 &1491200375
