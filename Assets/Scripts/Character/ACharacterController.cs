@@ -143,6 +143,7 @@ namespace MiniJameGam9.Character
                     inc = killer.Name;
                     if (assist != null)
                     {
+                        assist.Assist++;
                         inc += $" + {assist.Name}";
                     }
                 }
