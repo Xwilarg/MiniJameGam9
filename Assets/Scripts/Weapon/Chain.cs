@@ -57,14 +57,21 @@ namespace MiniJameGam9.Weapon
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!_hasCollided && _tagsToCheck.Contains(other.gameObject.tag))
+            if (!_hasCollided)
             {
-                if (other.gameObject.CompareTag("Player"))
+                if (_tagsToCheck.Contains(other.gameObject.tag))
                 {
-                    otherACC = other.gameObject.GetComponent<ACharacterController>();
-                    otherACC.CanMove = false;
+                    if (other.gameObject.CompareTag("Player"))
+                    {
+                        otherACC = other.gameObject.GetComponent<ACharacterController>();
+                        otherACC.CanMove = false;
+                    }
+                    Collision(other.transform);
                 }
-                Collision(other.transform);
+                else
+                {
+                    Collision(null);
+                }
             }
         }
         private ACharacterController otherACC = null;

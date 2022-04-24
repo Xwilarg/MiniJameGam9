@@ -146,7 +146,7 @@ namespace MiniJameGam9.Character
                         inc += $" + {assist.Name}";
                     }
                 }
-                UIManager.Instance.ShowFrag(inc, Profile.Name, icon, !killer.IsAi || !Profile.IsAi);
+                UIManager.Instance.ShowFrag(inc, Profile.Name, icon, (killer != null && !killer.IsAi) || !Profile.IsAi);
                 DamageManager.Instance.AddDeath(Profile);
                 Destroy(gameObject);
                 SpawnManager.Instance.Spawn(Profile);
