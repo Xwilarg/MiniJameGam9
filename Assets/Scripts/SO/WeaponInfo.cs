@@ -59,5 +59,8 @@ namespace MiniJameGam9.SO
 
         [Tooltip("Does show the laser")]
         public bool DoesShowLaser;
+
+        [Header("Hands config")]
+        public bool DisplayShotgun, DisplaySniper, DisplayGrenade;
     }
 }
