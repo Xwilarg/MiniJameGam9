@@ -39,15 +39,16 @@ namespace MiniJameGam9.Character.Player
             if (_lr.enabled)
             {
                 Vector3 outPos;
-                if (DebugManager.Instance.Raycast(
-                              id: "" + GetInstanceID() + "damage",
-                              origin: transform.position + transform.forward / 2f,
-                              direction: transform.forward,
-                              color: Color.green,
-                              hit: out RaycastHit hit,
-                              layer: _ignoreLayer
-                              ))
-                {
+                if (
+                    DebugManager.Instance.Raycast(
+                        id: "" + GetInstanceID() + "damage",
+                        origin: transform.position + transform.forward / 2f,
+                        direction: transform.forward,
+                        color: Color.green,
+                        hit: out RaycastHit hit,
+                        layer: _ignoreLayer
+                    )
+                ) {
                     outPos = hit.point;
                 }
                 else
@@ -60,7 +61,7 @@ namespace MiniJameGam9.Character.Player
                     outPos
                 });
             }
-
+            Container.ChainCooldown.fillAmount = GetPercentChainTimer;
             CheckForFallDeath();
         }
 
