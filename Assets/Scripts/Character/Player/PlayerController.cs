@@ -159,5 +159,10 @@ namespace MiniJameGam9.Character.Player
             if (value.performed && CanMove)
                 ThrowChain();
         }
+
+        public override void OnNewWeapon()
+        {
+            Container.WeaponDisplay.sprite = CurrentWeapon.FragIcon;
+        }
     }
 }

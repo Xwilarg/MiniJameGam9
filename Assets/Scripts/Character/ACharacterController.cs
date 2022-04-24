@@ -26,7 +26,7 @@ namespace MiniJameGam9.Character
         private Sprite _defaultDeathIcon;
 
         [SerializeField]
-        private GameObject _hhandgun, _hshotgun, _hsniper;
+        private GameObject _hhandgun, _hshotgun, _hsniper, _hgrenade;
 
         private bool _canMove = true;
         protected virtual void OnCanMoveChange(bool value)
@@ -57,7 +57,11 @@ namespace MiniJameGam9.Character
             _hhandgun.SetActive(false);
             _hshotgun.SetActive(false);
             _hsniper.SetActive(false);
+            _hgrenade.SetActive(false);
         }
+
+        public virtual void OnNewWeapon()
+        { }
 
         protected WeaponInfo CurrentWeapon => _overrideWeapon == null ? _baseWeapon : _overrideWeapon;
         protected bool HaveImprovedWeapon => _overrideWeapon != null;
@@ -123,6 +127,7 @@ namespace MiniJameGam9.Character
             else
             {
                 DisableAll();
+                OnNewWeapon();
                 _hhandgun.SetActive(true);
                 _overrideWeapon = null; // If we have another weapon, we throw it away
                 _projectilesInMagazine = _baseWeapon.ProjectilesInMagazine; // TODO: Maybe have old amount of projectile before weapon change instead?
@@ -198,6 +203,8 @@ namespace MiniJameGam9.Character
                 DisableAll();
                 if (_overrideWeapon.DisplayShotgun) _hshotgun.SetActive(true);
                 else if (_overrideWeapon.DisplaySniper) _hsniper.SetActive(true);
+                else if (_overrideWeapon.DisplayGrenade) _hgrenade.SetActive(true);
+                OnNewWeapon();
                 _projectilesInMagazine = CurrentWeapon.ProjectilesInMagazine;
                 OnReloadEnd();
                 Destroy(other.gameObject);
