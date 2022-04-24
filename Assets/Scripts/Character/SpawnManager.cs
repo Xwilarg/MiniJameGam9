@@ -1,5 +1,4 @@
 ﻿using MiniJameGam9.Character.Player;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,7 +25,7 @@ namespace MiniJameGam9.Character
 
         private void Start()
         {
-            foreach (var elem in new string[] { "Astro", "Zirk", "Gradkal", "Jadith", "Kumutues", "Timetraveler65" })
+            foreach (var elem in new string[] { "Astro", "Zirk", "Gradkal", "Jadith", "Kulutues", "Timetraveler65" })
             {
                 var p = new Profile(true, elem);
                 Spawn(_aiPrefab, p);
