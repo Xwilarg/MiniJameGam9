@@ -650,6 +650,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmmoText: {fileID: 7272403047505555952}
+  WeaponDisplay: {fileID: 8197462320748214997}
+  ReloadChain: {fileID: 1693226904565198957}
 --- !u!1001 &8067190895877870857
 PrefabInstance:
   m_ObjectHideFlags: 0
