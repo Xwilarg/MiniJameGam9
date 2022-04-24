@@ -179,8 +179,11 @@ namespace MiniJameGam9.Character
             return false;
         }
 
-        protected void CheckForFallDeath()
+        public float GetPercentChainTimer => _timerChain / _cInfo.ChainDelay;
+
+        protected void CheckForFallDeath() // Also called each frame
         {
+            _timerChain -= Time.deltaTime;
             if (transform.position.y < -10f)
             {
                 TakeDamage(1000, Vector3.zero, null, _defaultDeathIcon);
@@ -203,20 +206,16 @@ namespace MiniJameGam9.Character
 
         public void ThrowChain()
         {
-            if (_canUseChain)
+            if (_timerChain <= 0f)
             {
                 _canUseChain = false;
                 var go = Instantiate(_chain, transform.position + transform.forward, transform.rotation);
                 go.GetComponent<Chain>().Caster = transform;
                 go.GetComponent<Chain>().Profile = Profile;
-                StartCoroutine(ReloadChain());
+                _timerChain = _cInfo.ChainDelay;
             }
         }
 
-        private IEnumerator ReloadChain()
-        {
-            yield return new WaitForSeconds(_cInfo.ChainDelay);
-            _canUseChain = true;
-        }
+        private float _timerChain = 0f;
     }
 }
